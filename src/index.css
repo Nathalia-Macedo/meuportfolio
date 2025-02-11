@@ -1,0 +1,20 @@
+:root {
+  --color-sand: #e3dacd; /* Areia do Deserto - 60% */
+  --color-jungle: #2d4c3b; /* Acampamento na Selva - 30% */
+  --color-terracotta: #d96c4a; /* Terracota Suave - 10% */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  background-color: var(--color-sand);
+}
+
+html {
+  scroll-behavior: smooth;
+}
