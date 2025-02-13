@@ -218,6 +218,8 @@ const TeachingHero = () => {
           </div>
         </div>
       </div>
+
+      
     </section>
   )
 }

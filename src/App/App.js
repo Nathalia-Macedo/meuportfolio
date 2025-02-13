@@ -7,6 +7,7 @@ import ConsultoriaMercado from "../Pages/ExpConsultoria"
 import CopywriterPage from "../Pages/Copywriter"
 import ParceriaPage from "../Pages/ParceriaPage"
 import SDRPage from "../Pages/SDRPage"
+import FullStackPage from "../Pages/FullStackPage"
 function App() {
   return (
     <Router>
@@ -19,6 +20,7 @@ function App() {
         <Route path="/copywriter" element={<CopywriterPage/>}/>
         <Route path="/parceria" element={<ParceriaPage/>}/>
         <Route path="/sdr" element={<SDRPage/>}/>
+        <Route path="/desenvolvimento" element={<FullStackPage/>}/>
       </Routes>
     </Router>
   )

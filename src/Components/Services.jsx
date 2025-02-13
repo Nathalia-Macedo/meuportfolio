@@ -26,7 +26,7 @@ const services = [
     title: "Desenvolvedora Full Stack",
     description: "Desenvolvimento de sistemas, landing pages e integrações com APIs, oferecendo soluções completas.",
     icon: Laptop,
-    link: "/servicos/desenvolvimento",
+    link: "/desenvolvimento",
   },
   {
     title: "Consultoria para iniciantes",
@@ -80,19 +80,6 @@ const Services = () => {
             </motion.div>
           ))}
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-12 text-center"
-        >
-          <Link
-            to="/servicos"
-            className="inline-block bg-jungle dark:bg-sand text-sand dark:text-jungle font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 hover:bg-terra dark:hover:bg-terra-dark hover:text-white dark:hover:text-sand hover:shadow-lg transform hover:-translate-y-1"
-          >
-            Explore Todos os Serviços
-          </Link>
-        </motion.div>
       </div>
     </section>
   )

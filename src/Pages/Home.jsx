@@ -7,6 +7,7 @@ import Projects from "../Components/Projects"
 import Partnerships from "../Components/ParceriaSection"
 import Services from "../Components/Services"
 import CTASection from "../Components/CTASession"
+import Footer from "../Components/Footer"
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = React.useState(false)
 
@@ -30,6 +31,7 @@ export default function Home() {
       <Partnerships/>
       <Services/>
       <CTASection/>
+      <Footer/>
     </main>
   )
 }

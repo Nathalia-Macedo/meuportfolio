@@ -1,5 +1,6 @@
 import JobMarketHero from "../Components/ConsultoriaExp/HeroExp";
 import LearningPointsSection from "../Components/ConsultoriaExp/OqueVaiAprender";
+import Footer from "../Components/Footer";
 import {useEffect} from 'react'
 function ConsultoriaMercado(){
     useEffect(() => {
@@ -11,6 +12,7 @@ function ConsultoriaMercado(){
         <>
         <JobMarketHero/>
         <LearningPointsSection/>
+        <Footer/>
         </>
     )
 }
