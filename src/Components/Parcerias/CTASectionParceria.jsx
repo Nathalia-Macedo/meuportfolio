@@ -1,7 +1,6 @@
-"use client"
-
 import { useState } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
+import { Sparkles } from "lucide-react"
 
 const PartnershipSection = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +9,23 @@ const PartnershipSection = () => {
     business: "",
     serviceNeeded: "",
     serviceOffered: "",
+    discountCode: "",
   })
+
+  const [isEasterEggFound, setIsEasterEggFound] = useState(false)
+
+  const generateWhatsAppLink = (formData, isEasterEggFound) => {
+    const phoneNumber = "71987257532"
+    let message = `Nath, bora fechar uma parceria? `
+
+    if (isEasterEggFound) {
+      message += "Achei o Easter Egg e quero minha copy grátis! "
+    }
+
+    message += `Aqui vai minha ideia:\nNome: ${formData.name}\nE-mail: ${formData.email}\nMeu negócio: ${formData.business}\nPreciso de: ${formData.serviceNeeded}\nPosso oferecer: ${formData.serviceOffered}`
+
+    return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -18,12 +33,19 @@ const PartnershipSection = () => {
       ...prevState,
       [name]: value,
     }))
+
+    if (name === "discountCode" && value.toUpperCase() === "CRIATIVO2025") {
+      setIsEasterEggFound(true)
+    } else if (name === "discountCode") {
+      setIsEasterEggFound(false)
+    }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log(formData)
+    const whatsappLink = generateWhatsAppLink(formData, isEasterEggFound)
+    window.open(whatsappLink, "_blank")
+
     // Reset form after submission
     setFormData({
       name: "",
@@ -31,7 +53,9 @@ const PartnershipSection = () => {
       business: "",
       serviceNeeded: "",
       serviceOffered: "",
+      discountCode: "",
     })
+    setIsEasterEggFound(false)
   }
 
   return (
@@ -102,6 +126,12 @@ const PartnershipSection = () => {
                   placeholder: "Ex: Consultoria em SEO",
                   colSpan: true,
                 },
+                {
+                  name: "discountCode",
+                  label: "Código de Desconto (opcional)",
+                  type: "text",
+                  placeholder: "Insira seu código aqui",
+                },
               ].map((field, index) => (
                 <motion.div
                   key={field.name}
@@ -124,13 +154,30 @@ const PartnershipSection = () => {
                     onChange={handleInputChange}
                     placeholder={field.placeholder}
                     className="w-full px-4 py-2 rounded-md border border-[#D96C4A] focus:ring-2 focus:ring-[#D96C4A] focus:border-transparent bg-white dark:bg-[#2D4C3B] text-[#2D4C3B] dark:text-[#E3DACD] placeholder-[#2D4C3B]/50 dark:placeholder-[#E3DACD]/50"
-                    required
+                    required={field.name !== "discountCode"}
                   />
                 </motion.div>
               ))}
 
+              <AnimatePresence>
+                {isEasterEggFound && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="md:col-span-2 bg-[#D96C4A]/20 p-4 rounded-md"
+                  >
+                    <p className="text-[#2D4C3B] dark:text-[#E3DACD] flex items-center">
+                      <Sparkles className="mr-2" />
+                      Uau! Você encontrou o Easter Egg! 🎉 Como recompensa pela sua curiosidade e atenção aos detalhes,
+                      você receberá a copy do seu site gratuitamente! Estamos ansiosos para criar algo incrível juntos!
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
               <motion.button
-                type="submit"
+                onClick={handleSubmit}
                 className="md:col-span-2 w-full bg-[#D96C4A] hover:bg-[#C05A3E] text-white font-bold py-3 px-6 rounded-md transition-colors duration-300 transform hover:scale-105"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
