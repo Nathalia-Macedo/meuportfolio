@@ -1,9 +1,7 @@
-"use client"
-
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Slider from "react-slick"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, Candy } from "lucide-react"
 import nick from "../Assets/image.png"
 import nickCard from "../Assets/nickCard.png"
 // Importe os estilos do react-slick
@@ -125,7 +123,7 @@ const projects = [
       duration: "Em desenvolvimento",
       type: "Front End com integração a API",
     },
-  },
+  }
 ]
 
 const roleLabels = {
@@ -140,10 +138,60 @@ const roleColors = {
   copywriting: "bg-pink-500",
 }
 
+const chocoProjectNames = [
+  "Brownie.js Agency",
+  "Clínica NutriChocolate",
+  "Fórum Chocolate Amargo",
+  "Landing Page TrufaTech",
+  "Landing Page Grupo Bombons da Vida",
+  "Sistema de Automação Chocolate Integral",
+]
+
 export default function Projects() {
   const [activeProject, setActiveProject] = useState(projects[0])
   const [isTransitioning, setIsTransitioning] = useState(false)
   const sliderRef = useRef(null)
+  const [chocoMode, setChocoMode] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [showEasterEgg, setShowEasterEgg] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
+  const easterEggRef = useRef(null)
+  const chocoModeTimerRef = useRef(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (easterEggRef.current) {
+        const rect = easterEggRef.current.getBoundingClientRect()
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+          setShowEasterEgg(true)
+        } else {
+          setShowEasterEgg(false)
+        }
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const toggleChocoMode = () => {
+    setChocoMode(true)
+    setShowModal(true)
+
+    // Clear any existing timer
+    if (chocoModeTimerRef.current) {
+      clearTimeout(chocoModeTimerRef.current)
+    }
+
+    // Set a new timer to turn off chocoMode after 30 seconds
+    chocoModeTimerRef.current = setTimeout(() => {
+      setChocoMode(false)
+    }, 30000)
+  }
+
+  const closeModal = () => {
+    setShowModal(false)
+  }
 
   const handleProjectClick = (project) => {
     if (project.id === activeProject.id || isTransitioning) return
@@ -220,7 +268,7 @@ export default function Projects() {
                 {activeProject.subtitle}
               </h3>
               <h2 className="text-6xl font-bold mb-6 tracking-[0.15em]" style={{ color: activeProject.textColor }}>
-                {activeProject.title}
+                {chocoMode ? chocoProjectNames[activeProject.id - 1] : activeProject.title}
               </h2>
 
               {/* Project Stats */}
@@ -294,7 +342,9 @@ export default function Projects() {
 
                         {/* Card Content */}
                         <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
-                          <h3 className="text-white text-xl font-semibold mb-1">{project.title}</h3>
+                          <h3 className="text-white text-xl font-semibold mb-1">
+                            {chocoMode ? chocoProjectNames[project.id - 1] : project.title}
+                          </h3>
                           <p className="text-white/80 text-sm">{project.subtitle}</p>
 
                           {/* Mini Role Indicators */}
@@ -330,6 +380,44 @@ export default function Projects() {
           </div>
         </div>
       </div>
+
+      {/* Easter Egg - Ícone de Bombom */}
+      <div
+        className="absolute bottom-4 right-4 cursor-pointer"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={toggleChocoMode}
+      >
+        <Candy size={24} className={`text-terra transition-colors ${isHovered ? "text-terra-dark" : ""}`} />
+      </div>
+
+      {/* Modal Informativo */}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center"
+            onClick={closeModal}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="bg-white p-8 rounded-lg shadow-xl max-w-md text-center relative overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3 className="text-2xl font-bold text-jungle mb-4">Modo Chocólatra Ativado! 🍫</h3>
+              <p className="mb-4">
+                Parabéns! Você descobriu o easter egg do ChocoBytes, um projeto desenvolvido durante um de nossos
+                workshops! Agora você pode ver os nomes dos projetos com um toque chocolatudo por 30 segundos. Clique
+                fora deste modal para ver a mágica acontecer!
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
