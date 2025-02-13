@@ -8,7 +8,7 @@ const services = [
     description:
       "Qualificação de leads, atendimento, agendamento de reuniões, atualização do CRM e follow-ups estratégicos.",
     icon: PhoneCall,
-    link: "/servicos/sdr",
+    link: "/sdr",
   },
   {
     title: "Copywriter",

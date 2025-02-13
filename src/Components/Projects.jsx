@@ -11,7 +11,14 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import nutriCard from "../Assets/nutriCard.png"
 import nutri from "../Assets/nutri.png"
-
+import uni from '../Assets/unitech.png'
+import uni1 from '../Assets/unitech1.png'
+import erion from '../Assets/erion.png'
+import erion1 from '../Assets/erion1.png'
+import aguia from '../Assets/aguias.png'
+import aguia1 from  '../Assets/aguias1.png'
+import integral from '../Assets/integral.png'
+import integral1 from '../Assets/integral1.png'
 const projects = [
   {
     id: 1,
@@ -42,7 +49,7 @@ const projects = [
     backgroundColor: "#16A34A",
     textColor: "#E3DACD",
     roles: ["development", "design", "copywriting"],
-    link: "https://alaskadigital.com.br",
+    link: "https://nutricare-three.vercel.app",
     stats: {
       year: "2024",
       duration: "3 meses",
@@ -55,8 +62,8 @@ const projects = [
     subtitle: "Fórum interno para Empresa",
     description:
       "Esse foi o primeiro projeto fechado no 99freelas, criei a landing page e o fórum interno da empresa!",
-    cardImage: "/placeholder.svg?height=400&width=300",
-    backgroundImage: "/placeholder.svg?height=1200&width=1920",
+    cardImage: erion1,
+    backgroundImage: erion,
     backgroundColor: "#E3DACD",
     textColor: "#2D4C3B",
     roles: ["development", "design"],
@@ -69,20 +76,54 @@ const projects = [
   },
   {
     id: 4,
-    title: "E-commerce",
-    subtitle: "Moda Sustentável",
+    title: "Landing Page Unitec",
+    subtitle: "Landing page para ERP",
     description:
-      "E-commerce desenvolvido para cliente do setor de moda sustentável. Sistema completo de vendas online com integração a meios de pagamento e gestão de estoque.",
-    cardImage: "/placeholder.svg?height=400&width=300",
-    backgroundImage: "/placeholder.svg?height=1200&width=1920",
+      "Esse foi o primeiro projeto que consegui pela OLX, me pediram uma landing page para um ERP que estava em construção!",
+    cardImage: uni1,
+    backgroundImage: uni,
     backgroundColor: "#E3DACD",
     textColor: "#2D4C3B",
-    roles: ["development", "design"],
-    link: "#",
+    roles: ["development", "design","copywriting"],
+    link: "https://unitecsistemas.com.br/",
     stats: {
-      year: "2024",
-      duration: "4 meses",
-      type: "Full Stack",
+      year: "2025",
+      duration: "1 semana",
+      type: "Front End Estático",
+    },
+  },{
+    id: 5,
+    title: "Landing Page Grupo Águias da Vida",
+    subtitle: "Landing page para clínica de Reabilitação",
+    description:
+      "Esse foi o primeiro projeto que consegui pelo Linkedin, divulgaram como vaga, usei os filtros da plataforma e fui a primeira a me candidatar!",
+    cardImage: aguia1,
+    backgroundImage: aguia,
+    backgroundColor: "#E3DACD",
+    textColor: "#2D4C3B",
+    roles: ["development", "design","copywriting"],
+    link: "https://aguias-da-vida.vercel.app/",
+    stats: {
+      year: "2025",
+      duration: "2 semana",
+      type: "Front End Estático",
+    },
+  },{
+    id: 6,
+    title: "Sistema de Automação Integral Energia",
+    subtitle: "Automação de preenchimento de formulários",
+    description:
+      "Esse projeto consegui após usar uma estratégia muito boa que te ensino na consultoria. Esse sistema custou 10.200 reais!",
+    cardImage: integral1,
+    backgroundImage: integral,
+    backgroundColor: "#E3DACD",
+    textColor: "#2D4C3B",
+    roles: ["development", "design","copywriting"],
+    link: "https://integral-energia.vercel.app/",
+    stats: {
+      year: "2025",
+      duration: "Em desenvolvimento",
+      type: "Front End com integração a API",
     },
   },
 ]
