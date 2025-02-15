@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes,Navigate } from "react-router-dom"
 import Home from '../Pages/Home'
 import TelaAulas from "../Pages/AulasParticulares"
 import ConsultoriaIniciantes from "../Pages/ConsultoriaInicio"
@@ -8,6 +8,7 @@ import CopywriterPage from "../Pages/Copywriter"
 import ParceriaPage from "../Pages/ParceriaPage"
 import SDRPage from "../Pages/SDRPage"
 import FullStackPage from "../Pages/FullStackPage"
+import NotFound from "../Pages/NotFoundPage"
 function App() {
   return (
     <Router>
@@ -21,6 +22,9 @@ function App() {
         <Route path="/parceria" element={<ParceriaPage/>}/>
         <Route path="/sdr" element={<SDRPage/>}/>
         <Route path="/desenvolvimento" element={<FullStackPage/>}/>
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/404" replace />} />
+
       </Routes>
     </Router>
   )
