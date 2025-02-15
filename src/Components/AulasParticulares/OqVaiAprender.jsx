@@ -36,6 +36,20 @@ const technologies = [
 const WhatYouWillLearn = () => {
   const [activePoint, setActivePoint] = useState(0)
   const [carouselOffset, setCarouselOffset] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640)
+    }
+
+    handleResize()
+    window.addEventListener("resize", handleResize)
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
 
   useEffect(() => {
     const pointTimer = setInterval(() => {
@@ -53,7 +67,7 @@ const WhatYouWillLearn = () => {
   }, [])
 
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#E3DACD] to-[#D96C4A]/10" />
         <motion.div
@@ -81,8 +95,10 @@ const WhatYouWillLearn = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-jungle dark:text-sand mb-12">O Que Você Vai Aprender?</h2>
-          <div className="relative h-32 mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-jungle dark:text-sand mb-8 sm:mb-12">
+            O Que Você Vai Aprender?
+          </h2>
+          <div className="relative h-40 sm:h-32 mb-8 sm:mb-12">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activePoint}
@@ -90,10 +106,10 @@ const WhatYouWillLearn = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="absolute inset-0 flex items-center justify-center"
+                className="absolute inset-0 flex items-center justify-center px-4 sm:px-0"
               >
-                <div className="flex items-center text-left text-jungle dark:text-sand text-2xl bg-white/95 dark:bg-jungle-dark/95 p-6 rounded-2xl shadow-lg">
-                  <Check className="mr-4 text-terra flex-shrink-0" size={32} />
+                <div className="flex items-center text-left text-jungle dark:text-sand text-lg sm:text-2xl bg-white/95 dark:bg-jungle-dark/95 p-4 sm:p-6 rounded-2xl shadow-lg max-w-xs sm:max-w-none">
+                  <Check className="mr-2 sm:mr-4 text-terra flex-shrink-0" size={24} />
                   <span>{learningPoints[activePoint]}</span>
                 </div>
               </motion.div>
@@ -103,33 +119,39 @@ const WhatYouWillLearn = () => {
             href="https://wa.me/71987257532?text=Olá! Gostaria de garantir minha aula grátis!"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-8 py-4 bg-terra hover:bg-terra-dark text-white rounded-full text-lg font-semibold mt-12 transition-all duration-300 transform hover:scale-105"
+            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-terra hover:bg-terra-dark text-white rounded-full text-base sm:text-lg font-semibold mt-8 sm:mt-12 transition-all duration-300 transform hover:scale-105"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Garanta sua aula grátis! <ArrowRight className="ml-2" />
+            Garanta sua aula grátis! <ArrowRight className="ml-2" size={18} />
           </motion.a>
         </motion.div>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.5 }}>
-          <h3 className="text-3xl font-bold text-jungle dark:text-sand mb-12 text-center">
+          <h3 className="text-2xl sm:text-3xl font-bold text-jungle dark:text-sand mb-8 sm:mb-12 text-center">
             Tecnologias que você vai dominar
           </h3>
           <div className="relative overflow-hidden">
             <motion.div
               className="flex transition-all duration-500 ease-in-out"
-              animate={{ x: `-${carouselOffset * (100 / 5)}%` }}
+              animate={{ x: `-${carouselOffset * (100 / (isMobile ? 3 : 5))}%` }}
             >
               {[...technologies, ...technologies.slice(0, 5)].map((tech, index) => (
                 <motion.div
                   key={`${tech.name}-${index}`}
-                  className="flex-shrink-0 w-1/5 px-4"
+                  className="flex-shrink-0 w-1/3 sm:w-1/4 md:w-1/5 px-2 sm:px-4"
                   whileHover={{ scale: 1.1, y: -10 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <div className="rounded-lg p-4 flex flex-col items-center justify-center h-40">
-                    <img src={tech.image || "/placeholder.svg"} alt={tech.name} className="w-16 h-16 mb-4" />
-                    <span className="text-sm text-jungle dark:text-sand text-center font-semibold">{tech.name}</span>
+                  <div className="rounded-lg p-2 sm:p-4 flex flex-col items-center justify-center h-24 sm:h-32 md:h-40">
+                    <img
+                      src={tech.image || "/placeholder.svg"}
+                      alt={tech.name}
+                      className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-4"
+                    />
+                    <span className="text-xs sm:text-sm text-jungle dark:text-sand text-center font-semibold">
+                      {tech.name}
+                    </span>
                   </div>
                 </motion.div>
               ))}
