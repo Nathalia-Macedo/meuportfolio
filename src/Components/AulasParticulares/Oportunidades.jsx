@@ -1,133 +1,134 @@
-// "use client"
-
-// import { useState } from "react"
-// import { motion } from "framer-motion"
-// import { Code, Target, Lightbulb } from "lucide-react"
-
-// const opportunityData = [
-//   {
-//     icon: Code,
-//     title: "Iniciantes na Programação",
-//     description: "Quem quer entrar no mercado de programação, mas não sabe por onde começar",
-//   },
-//   {
-//     icon: Target,
-//     title: "Estudantes Buscando Prática",
-//     description: "Quem já estuda, mas sente que falta prática e direcionamento",
-//   },
-//   {
-//     icon: Lightbulb,
-//     title: "Aspirantes a Emprego",
-//     description: "Quem quer aumentar suas chances de conseguir um emprego na área",
-//   },
-// ]
-
-// const OpportunityCard = ({ icon: Icon, title, description, isActive, onClick }) => (
-//   <motion.div
-//     className={`bg-white dark:bg-jungle-dark p-6 rounded-lg shadow-lg cursor-pointer transition-all duration-300 ${
-//       isActive ? "border-2 border-terra" : ""
-//     }`}
-//     whileHover={{ scale: 1.05 }}
-//     whileTap={{ scale: 0.95 }}
-//     onClick={onClick}
-//   >
-//     <Icon className="w-12 h-12 text-terra mb-4" />
-//     <h3 className="text-xl font-bold mb-2 text-jungle dark:text-sand">{title}</h3>
-//     <p className="text-jungle-dark dark:text-sand-light">{description}</p>
-//   </motion.div>
-// )
-
-// const OpportunitySection = () => {
-//   const [activeCard, setActiveCard] = useState(null)
-
-//   return (
-//     <section className="py-20 bg-sand dark:bg-jungle">
-//       <div className="max-w-6xl mx-auto px-4">
-//         <motion.h2
-//           initial={{ opacity: 0, y: -20 }}
-//           animate={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.5 }}
-//           className="text-4xl font-bold text-center mb-12 text-jungle dark:text-sand"
-//         >
-//           Para Quem é Essa Oportunidade?
-//         </motion.h2>
-//         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-//           {opportunityData.map((opportunity, index) => (
-//             <motion.div
-//               key={index}
-//               initial={{ opacity: 0, y: 20 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.5, delay: index * 0.1 }}
-//             >
-//               <OpportunityCard {...opportunity} isActive={activeCard === index} onClick={() => setActiveCard(index)} />
-//             </motion.div>
-//           ))}
-//         </div>
-//         <motion.div
-//           initial={{ opacity: 0 }}
-//           animate={{ opacity: 1 }}
-//           transition={{ duration: 0.5, delay: 0.5 }}
-//           className="mt-12 text-center"
-//         >
-//           <p className="text-xl text-jungle dark:text-sand mb-6">
-//             Não importa em qual grupo você se encaixa, temos a solução perfeita para você!
-//           </p>
-//           <motion.a
-//             href="https://wa.me/71987257532?text=Olá! Gostaria de saber mais sobre as oportunidades de aprendizado."
-//             target="_blank"
-//             rel="noopener noreferrer"
-//             className="inline-block bg-terra hover:bg-terra-dark text-white font-bold py-3 px-8 rounded-full transition-colors duration-300"
-//             whileHover={{ scale: 1.05 }}
-//             whileTap={{ scale: 0.95 }}
-//           >
-//             Saiba Mais
-//           </motion.a>
-//         </motion.div>
-//       </div>
-//     </section>
-//   )
-// }
-
-// export default OpportunitySection
-
-"use client"
 import { motion } from "framer-motion"
-import { Code2, Target, Lightbulb } from "lucide-react"
+import { Code2, Target, Lightbulb, Binary, Braces, Terminal } from "lucide-react"
 
 const opportunityData = [
   {
     icon: Code2,
     title: "Iniciantes na Programação",
     description: "Quem quer entrar no mercado de programação, mas não sabe por onde começar",
+    bgSymbols: ["</>", "{ }", "()"],
   },
   {
     icon: Target,
     title: "Estudantes Buscando Prática",
     description: "Quem já estuda, mas sente que falta prática e direcionamento",
+    bgSymbols: ["for()", "if()", "=>"],
   },
   {
     icon: Lightbulb,
     title: "Aspirantes a Emprego",
     description: "Quem quer aumentar suas chances de conseguir um emprego na área",
+    bgSymbols: ["[]", "++", "{}"],
   },
 ]
 
-const OpportunityCard = ({ icon: Icon, title, description }) => (
+const OpportunityCard = ({ icon: Icon, title, description, bgSymbols }) => (
   <motion.div
-    className="bg-white p-8 rounded-lg shadow-lg h-full flex flex-col"
+    className="relative bg-white p-8 rounded-lg shadow-lg h-full flex flex-col overflow-hidden"
     whileHover={{ y: -5 }}
     transition={{ duration: 0.2 }}
   >
-    <Icon className="w-12 h-12 text-terra mb-6" strokeWidth={1.5} />
-    <h3 className="text-xl font-bold mb-4 text-jungle">{title}</h3>
-    <p className="text-jungle/80 text-lg">{description}</p>
+    {/* Background decorative elements */}
+    <div className="absolute inset-0 overflow-hidden">
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-white/95 to-white/90" />
+
+      {/* Animated code symbols */}
+      {bgSymbols.map((symbol, index) => (
+        <motion.div
+          key={index}
+          className="absolute text-terra/5"
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: [0.1, 0.3, 0.1],
+            x: [0, 10, 0],
+            y: [0, -10, 0],
+            rotate: [0, index % 2 === 0 ? 10 : -10, 0],
+          }}
+          transition={{
+            duration: 5,
+            delay: index * 0.5,
+            repeat: Number.POSITIVE_INFINITY,
+            repeatType: "reverse",
+          }}
+          style={{
+            left: `${(index + 1) * 25}%`,
+            top: `${(index + 1) * 30}%`,
+            fontSize: `${Math.random() * 20 + 30}px`,
+          }}
+        >
+          {symbol}
+        </motion.div>
+      ))}
+
+      {/* Decorative circles */}
+      <motion.div
+        className="absolute -right-8 -bottom-8 w-32 h-32 bg-terra/5 rounded-full"
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.1, 0.2, 0.1],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Number.POSITIVE_INFINITY,
+          repeatType: "reverse",
+        }}
+      />
+      <motion.div
+        className="absolute -left-4 -top-4 w-24 h-24 bg-jungle/5 rounded-full"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.1, 0.15, 0.1],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Number.POSITIVE_INFINITY,
+          repeatType: "reverse",
+        }}
+      />
+    </div>
+
+    {/* Content */}
+    <div className="relative z-10">
+      <Icon className="w-12 h-12 text-terra mb-6" strokeWidth={1.5} />
+      <h3 className="text-xl font-bold mb-4 text-jungle">{title}</h3>
+      <p className="text-jungle/80 text-lg">{description}</p>
+    </div>
   </motion.div>
 )
 
 const OpportunitySection = () => {
   return (
-    <section className="py-20 bg-sand">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="py-20 bg-sand relative overflow-hidden">
+      {/* Background patterns */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-sand via-terra/5 to-jungle/5" />
+        {[...Array(5)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute"
+            animate={{
+              x: [0, 50, 0],
+              y: [0, -30, 0],
+              opacity: [0.1, 0.2, 0.1],
+            }}
+            transition={{
+              duration: Math.random() * 5 + 5,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+              delay: i * 0.5,
+            }}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+          >
+            {[<Binary key="1" />, <Braces key="2" />, <Terminal key="3" />][i % 3]}
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
