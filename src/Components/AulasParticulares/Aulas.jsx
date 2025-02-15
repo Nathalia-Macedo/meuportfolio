@@ -15,6 +15,7 @@ import {
   FileCode,
 } from "lucide-react"
 import TestimonialBubbles from "./Testemunhas"
+
 const stats = [
   {
     icon: Users,
@@ -119,21 +120,21 @@ const TeachingHero = () => {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
           {/* Left Column */}
-          <div className="space-y-12">
+          <div className="space-y-8">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="space-y-8"
+              className="space-y-6"
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-jungle dark:text-sand leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-jungle dark:text-sand leading-tight">
                 Aprenda Programação de Forma Simples e Prática!
               </h1>
 
-              <p className="text-xl text-jungle-dark dark:text-sand-light flex items-center gap-2">
+              <p className="text-lg sm:text-xl text-jungle-dark dark:text-sand-light flex items-center gap-2">
                 <span className="text-2xl">🔥</span>
                 Aula experimental gratuita de 2h + suporte completo para sua carreira!
               </p>
@@ -142,7 +143,7 @@ const TeachingHero = () => {
                 href="https://wa.me/71987257532?text=Olá! Gostaria de agendar minha aula experimental gratuita!"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-8 py-4 bg-terra hover:bg-terra-dark text-white rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                className="inline-flex items-center px-6 py-3 sm:px-8 sm:py-4 bg-terra hover:bg-terra-dark text-white rounded-full text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-105"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -151,7 +152,7 @@ const TeachingHero = () => {
               </motion.a>
 
               {/* Features Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {features.map((feature, index) => (
                   <motion.div
                     key={index}
@@ -160,18 +161,51 @@ const TeachingHero = () => {
                     animate={controls}
                     className="flex flex-col items-center text-center space-y-2"
                   >
-                    <feature.icon className="h-8 w-8 text-terra" />
-                    <span className="text-sm text-jungle dark:text-sand">{feature.text}</span>
+                    <feature.icon className="h-6 w-6 sm:h-8 sm:w-8 text-terra" />
+                    <span className="text-xs sm:text-sm text-jungle dark:text-sand">{feature.text}</span>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
 
-            {/* Stats Grid - Two rows of four cards */}
-            <div className="w-full space-y-2">
-              {/* First Row */}
+            {/* Stats Grid - Mobile */}
+            <div className="md:hidden w-full space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                {stats.slice(0, 4).map((stat, index) => (
+                  <motion.div
+                    key={index}
+                    custom={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={controls}
+                    className="bg-white/80 dark:bg-jungle-dark/80 backdrop-blur-sm p-4 rounded-lg text-center"
+                  >
+                    <stat.icon className="h-6 w-6 text-terra mx-auto mb-2" />
+                    <div className="text-xl font-bold text-jungle dark:text-sand">{stat.count}</div>
+                    <div className="text-xs text-jungle-dark dark:text-sand-light">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                {stats.slice(4).map((stat, index) => (
+                  <motion.div
+                    key={`additional-${index}`}
+                    custom={index + 4}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={controls}
+                    className="bg-white/80 dark:bg-jungle-dark/80 backdrop-blur-sm p-4 rounded-lg text-center"
+                  >
+                    <stat.icon className="h-6 w-6 text-terra mx-auto mb-2" />
+                    <div className="text-xl font-bold text-jungle dark:text-sand">{stat.count}</div>
+                    <div className="text-xs text-jungle-dark dark:text-sand-light">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Stats Grid - Desktop */}
+            <div className="hidden md:block w-full space-y-2">
               <div className="flex gap-2">
-                {stats.map((stat, index) => (
+                {stats.slice(0, 4).map((stat, index) => (
                   <motion.div
                     key={index}
                     custom={index}
@@ -185,10 +219,8 @@ const TeachingHero = () => {
                   </motion.div>
                 ))}
               </div>
-
-              {/* Second Row */}
               <div className="flex gap-2">
-                {additionalStats.map((stat, index) => (
+                {stats.slice(4).map((stat, index) => (
                   <motion.div
                     key={`additional-${index}`}
                     custom={index + 4}
@@ -218,11 +250,8 @@ const TeachingHero = () => {
           </div>
         </div>
       </div>
-
-      
     </section>
   )
 }
 
 export default TeachingHero
-
