@@ -4,6 +4,7 @@ import { loadFull } from "tsparticles"
 import { motion, AnimatePresence } from "framer-motion"
 import { DribbbleIcon as Behance, Github, Instagram, Linkedin, MessageCircle } from "lucide-react"
 import VSCodeSimulation from "./VsCodeSimulator"
+
 const Hero = ({ toggleDarkMode, isDarkMode }) => {
   const [phraseIndex, setPhraseIndex] = React.useState(0)
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
@@ -118,7 +119,7 @@ const Hero = ({ toggleDarkMode, isDarkMode }) => {
             </li>
             <li>
               <a
-                href="#"
+                href="#conteudos"
                 className="text-jungle dark:text-sand hover:text-terra dark:hover:text-terra transition-colors"
               >
                 Conteúdos
@@ -126,7 +127,7 @@ const Hero = ({ toggleDarkMode, isDarkMode }) => {
             </li>
             <li>
               <a
-                href="#"
+                href="#contato"
                 className="text-jungle dark:text-sand hover:text-terra dark:hover:text-terra transition-colors"
               >
                 Contato
@@ -147,15 +148,7 @@ const Hero = ({ toggleDarkMode, isDarkMode }) => {
               </li>
               <li>
                 <a
-                  href="#"
-                  className="text-jungle dark:text-sand hover:text-terra dark:hover:text-terra transition-colors"
-                >
-                  Conteúdos
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
+                  href="#projetos"
                   className="text-jungle dark:text-sand hover:text-terra dark:hover:text-terra transition-colors"
                 >
                   Projetos
@@ -163,7 +156,7 @@ const Hero = ({ toggleDarkMode, isDarkMode }) => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#parceria"
                   className="text-jungle dark:text-sand hover:text-terra dark:hover:text-terra transition-colors"
                 >
                   Parcerias
@@ -171,7 +164,7 @@ const Hero = ({ toggleDarkMode, isDarkMode }) => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#serviços"
                   className="text-jungle dark:text-sand hover:text-terra dark:hover:text-terra transition-colors"
                 >
                   Serviços
@@ -179,7 +172,15 @@ const Hero = ({ toggleDarkMode, isDarkMode }) => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#conteudos"
+                  className="text-jungle dark:text-sand hover:text-terra dark:hover:text-terra transition-colors"
+                >
+                  Conteúdos
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contato"
                   className="text-jungle dark:text-sand hover:text-terra dark:hover:text-terra transition-colors"
                 >
                   Contato
@@ -312,4 +313,3 @@ const Hero = ({ toggleDarkMode, isDarkMode }) => {
 }
 
 export default Hero
-
