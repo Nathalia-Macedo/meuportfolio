@@ -8,9 +8,9 @@ const Header = ({ toggleDarkMode, isDarkMode }) => {
   }
 
   return (
-    <header className="fixed top-0 w-full z-30 bg-sand/80 dark:bg-jungle/80 backdrop-blur-sm transition-colors duration-300 py-1">
+    <header className="fixed top-0 left-0 right-0 bg-sand/80 dark:bg-jungle/80 backdrop-blur-sm transition-colors duration-300 py-1 z-10">
       <nav className="max-w-7xl mx-auto px-2">
-        <div className="flex justify-between items-center h-10">
+        <div className="flex justify-between items-center h-12">
           <a
             href="/"
             onClick={handleGoHome}
