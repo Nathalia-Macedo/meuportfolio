@@ -1,5 +1,3 @@
-"use client"
-
 import { motion } from "framer-motion"
 import { Clock, Calendar, Briefcase, Code, Linkedin, FileCheck, Wallet, CreditCard, Phone } from "lucide-react"
 
@@ -41,7 +39,7 @@ const benefits = [
 
 const PrivateLessonsPricing = () => {
   return (
-    <section className="bg-gradient-to-br from-sand to-white dark:from-jungle dark:to-jungle-dark py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section className="bg-gradient-to-br from-sand to-white dark:from-jungle dark:to-jungle/90 py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden transition-colors duration-300">
       {/* Decorative Elements */}
       <div className="absolute inset-0 opacity-50 dark:opacity-30">
         <div className="absolute top-0 left-0 w-64 h-64 bg-terra rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
@@ -56,10 +54,10 @@ const PrivateLessonsPricing = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-jungle dark:text-sand mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-jungle dark:text-sand mb-6 transition-colors duration-300">
             Aulas Particulares de Programação
           </h2>
-          <p className="text-xl text-jungle-dark dark:text-sand-light max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 dark:text-sand/90 max-w-3xl mx-auto transition-colors duration-300">
             Se você quer aprender programação de forma direta, prática e sem enrolação, minhas aulas particulares são
             para você! Aqui, você recebe conteúdo descomplicado, com foco total no seu aprendizado e objetivos.
           </p>
@@ -76,10 +74,10 @@ const PrivateLessonsPricing = () => {
             <motion.div
               key={index}
               whileHover={{ scale: 1.05 }}
-              className="bg-white dark:bg-jungle-dark rounded-xl p-6 shadow-lg flex items-start space-x-4"
+              className="bg-white/90 dark:bg-jungle/90 backdrop-blur-sm rounded-xl p-6 shadow-lg flex items-start space-x-4 border border-transparent dark:border-sand/10 transition-all duration-300"
             >
               <benefit.icon className="w-6 h-6 text-terra flex-shrink-0 mt-1" />
-              <p className="text-jungle dark:text-sand">{benefit.text}</p>
+              <p className="text-jungle dark:text-sand transition-colors duration-300">{benefit.text}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -94,20 +92,22 @@ const PrivateLessonsPricing = () => {
           {plans.map((plan, index) => (
             <motion.div
               key={index}
-              className="bg-white dark:bg-jungle-dark rounded-2xl shadow-xl overflow-hidden"
+              className="bg-white/90 dark:bg-jungle/90 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-transparent dark:border-sand/10 transition-all duration-300"
               whileHover={{ y: -5 }}
             >
               <div className="p-8">
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <p className="text-jungle-dark/60 dark:text-sand/60 line-through">
+                    <p className="text-gray-600 dark:text-sand/60 line-through transition-colors duration-300">
                       Valor: R${plan.originalPrice},00
                     </p>
                     <div className="flex items-center gap-3 mb-1">
                       <span className="bg-terra/10 text-terra px-3 py-1 rounded-full text-sm font-semibold">
                         {plan.discount}
                       </span>
-                      <h3 className="text-4xl font-bold text-jungle dark:text-sand">R${plan.price},00</h3>
+                      <h3 className="text-4xl font-bold text-jungle dark:text-sand transition-colors duration-300">
+                        R${plan.price},00
+                      </h3>
                     </div>
                     <p className="text-terra text-sm font-medium flex items-center gap-1">
                       🔥 Promoção por tempo limitado
@@ -117,13 +117,13 @@ const PrivateLessonsPricing = () => {
 
                 <div className="space-y-6">
                   <div>
-                    <h4 className="text-xl font-semibold text-jungle dark:text-sand mb-2">
+                    <h4 className="text-xl font-semibold text-jungle dark:text-sand mb-2 transition-colors duration-300">
                       Plano {plan.hours}h/semana
                     </h4>
-                    <p className="text-jungle-dark dark:text-sand-light">{plan.frequency}</p>
+                    <p className="text-gray-700 dark:text-sand/80 transition-colors duration-300">{plan.frequency}</p>
                   </div>
 
-                  <ul className="space-y-2 text-jungle-dark dark:text-sand-light">
+                  <ul className="space-y-2 text-gray-700 dark:text-sand/80 transition-colors duration-300">
                     <li className="flex items-center gap-2">
                       <span className="text-terra">✓</span> {plan.hours} horas de aula por semana
                     </li>
@@ -142,7 +142,7 @@ const PrivateLessonsPricing = () => {
                   </ul>
 
                   <div className="space-y-4">
-                    <div className="flex items-center gap-4 text-jungle-dark dark:text-sand-light">
+                    <div className="flex items-center gap-4 text-gray-700 dark:text-sand/80 transition-colors duration-300">
                       <div className="flex items-center gap-1">
                         <Wallet className="w-4 h-4" />
                         <span>PIX</span>
@@ -158,7 +158,7 @@ const PrivateLessonsPricing = () => {
                       href={`https://wa.me/71987257532?text=Olá! Gostaria de saber mais sobre o plano de ${plan.hours}h semanais de aulas particulares de programação.`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full bg-terra hover:bg-terra-dark text-white text-center font-semibold py-3 px-4 rounded-lg transition-colors duration-300"
+                      className="block w-full bg-terra hover:bg-terra/90 text-white text-center font-semibold py-3 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -179,7 +179,7 @@ const PrivateLessonsPricing = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex flex-wrap justify-center gap-8 mt-12 text-jungle-dark/60 dark:text-sand/60"
+          className="flex flex-wrap justify-center gap-8 mt-12 text-gray-600 dark:text-sand/60 transition-colors duration-300"
         >
           <div className="flex items-center gap-2">
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -216,4 +216,3 @@ const PrivateLessonsPricing = () => {
 }
 
 export default PrivateLessonsPricing
-

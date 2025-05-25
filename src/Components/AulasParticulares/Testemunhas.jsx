@@ -10,13 +10,13 @@ const testimonials = [
   },
   {
     id: 2,
-    name: "Anônimo",
+    name: "Alice",
     avatar: "A",
     text: "Gostei bastante da didática abordada, muito pertinente e de fácil assimilação. Já me passou muita segurança e boas perspectivas para o decorrer do meu aprendizado. Sensacional!",
   },
   {
     id: 3,
-    name: "Aluno Python",
+    name: "Almir",
     avatar: "P",
     text: "Nathalia, a aula sobre Python, Rest foi incrível! Senti que aprendi muito sobre essa linguagem com simplicidade e uma dinâmica fora do padrão de forma clara e envolvente. Tua habilidade em ensinar, e a flexibilidade foi impressionante.",
   },
