@@ -519,7 +519,7 @@ const projects = [
     backgroundColor: "#16A34A",
     textColor: "#E3DACD",
     roles: ["development", "design", "copywriting"],
-    link: "https://nutricare-three.vercel.app",
+    link: "https://www.clinicanutricare.com.br/",
     stats: {
       year: "2024",
       duration: "3 meses",
