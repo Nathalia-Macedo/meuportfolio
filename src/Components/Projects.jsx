@@ -29,7 +29,7 @@ const projects = [
     title: "Landing Page Objetiva",
     subtitle: "Landing Page de Construtora",
     description:
-      "Projeto onde atuei como desenvolvedora Full Stack, desde a criação do banco a desenvolvimento do Front.",
+      "Projeto onde atuei como desenvolvedora Full Stack, desde a criação do banco a desenvolvimento do Front. No Back End foi utilizado Flask, Supabase para hospedagem do banco e Cloudinary para armazenamento das imagens adicionadas!",
     cardImage: objcard,
     backgroundImage: objetiva,
     backgroundColor: "#E3DACD",
@@ -65,7 +65,7 @@ const projects = [
     title: "Sistema de Gerenciamento de Talentos MegaStage",
     subtitle: "Gerenciamento do site e talentos da MegaStage",
     description:
-      "Esse projeto veio através da indicação de um aluno que trabalha na MegaStage, o site e o sistema desenvolvidos por mim e pelo Renan, o Back end da minh equipe",
+      "Esse projeto veio através da indicação de um aluno que trabalha na MegaStage, o site e o sistema desenvolvidos por mim e pelo Renan, o Back end da minha equipe, Renan Teixeira!",
     cardImage: MSCard,
     backgroundImage: MSBG,
     backgroundColor: "#E3DACD",
@@ -81,7 +81,7 @@ const projects = [
   {
     id: 4,
     title: "Landing Page Biz One",
-    subtitle: "Landing page integrada com o pixel da meta, e a API do Salesforce",
+    subtitle: "Landing page integrada com o pixel da meta, e a API do Salesforce, e verificação de Automação do Google.",
     description:
       "Esse projeto foi indicação de uma aluna particular",
     cardImage: bizmodCard,
