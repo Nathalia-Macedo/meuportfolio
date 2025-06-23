@@ -9,6 +9,7 @@ import Services from "../Components/Services"
 import CTASection from "../Components/CTASession"
 import Footer from "../Components/Footer"
 import ContentHub from "../Components/HubConteudosSection"
+import MySkills from "../Components/MySkills"
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = React.useState(false)
 
@@ -29,6 +30,7 @@ export default function Home() {
       <Hero toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
       <About />
       <Projects/>
+      <MySkills/>
       <ContentHub/>
       <Partnerships/>
       <Services/>
