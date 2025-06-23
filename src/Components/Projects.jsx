@@ -21,9 +21,29 @@ import MSCard from '../Assets/MSCard.png'
 import MSBG from '../Assets/MSBG.png'
 import bizmodBG from '../Assets/bizmodBG.png'
 import bizmodCard from '../Assets/bizmodCard.png'
+import objetiva from '../Assets/objetiva.png'
+import objcard from '../Assets/objetivaCard.png'
 const projects = [
   {
     id: 1,
+    title: "Landing Page Objetiva",
+    subtitle: "Landing Page de Construtora",
+    description:
+      "Projeto onde atuei como desenvolvedora Full Stack, desde a criação do banco a desenvolvimento do Front.",
+    cardImage: objcard,
+    backgroundImage: objetiva,
+    backgroundColor: "#E3DACD",
+    textColor: "#2D4C3B",
+    roles: ["development"],
+    link: "https://landing-page-objetiva-2b38.vercel.app/",
+    stats: {
+      year: "2025",
+      duration: "3 semanas",
+      type: "Full Stack",
+    },
+  },
+  {
+    id: 2,
     title: "Publi X Agency",
     subtitle: "Landing Page de Agência de Marketing",
     description:
@@ -41,7 +61,7 @@ const projects = [
     },
   },
   {
-    id: 2,
+    id: 3,
     title: "Sistema de Gerenciamento de Talentos MegaStage",
     subtitle: "Gerenciamento do site e talentos da MegaStage",
     description:
@@ -59,7 +79,7 @@ const projects = [
     },
   },
   {
-    id: 3,
+    id: 4,
     title: "Landing Page Biz One",
     subtitle: "Landing page integrada com o pixel da meta, e a API do Salesforce",
     description:
@@ -77,7 +97,7 @@ const projects = [
     },
   },
   {
-    id: 4,
+    id: 5,
     title: "Clínica Nutricare",
     subtitle: "Landing page de clínica de nutrição",
     description:
@@ -95,7 +115,7 @@ const projects = [
     },
   },
   {
-    id: 5,
+    id: 6,
     title: "Fórum Erion Sistemas",
     subtitle: "Fórum interno para Empresa",
     description: "Esse foi o primeiro projeto fechado no 99freelas, criei a landing page e o fórum interno da empresa!",
@@ -112,7 +132,7 @@ const projects = [
     },
   },
   {
-    id: 6,
+    id: 7,
     title: "Landing Page Unitec",
     subtitle: "Landing page para ERP",
     description:
@@ -130,7 +150,7 @@ const projects = [
     },
   },
   {
-    id: 7,
+    id: 8,
     title: "Landing Page Grupo Águias da Vida",
     subtitle: "Landing page para clínica de Reabilitação",
     description:
@@ -148,7 +168,7 @@ const projects = [
     },
   },
   {
-    id: 8,
+    id: 9,
     title: "Sistema de Automação Integral Energia",
     subtitle: "Automação de preenchimento de formulários",
     description:
@@ -181,6 +201,7 @@ const roleColors = {
 }
 
 const chocoProjectNames = [
+  "Landing Page ChocoBuild",
   "Brownie.js Agency",
   "Sistema de Gerenciamento de chocolates",
   "Landing Page ChocoMod",
