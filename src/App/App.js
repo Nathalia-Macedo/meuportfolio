@@ -13,6 +13,7 @@ import UnderConstruction from "../Components/EmConstrucao"
 import Conteudos from "../Pages/ConteudoPage"
 import FunnelContent from "../Components/Conteudos/Marketing/FunilVendas"
 import RootLayout from "../Components/Conteudos/RootLayout"
+import AppExplanation from "../Components/Conteudos/AppManagement"
 function App() {
   return (
     <Router>
@@ -32,6 +33,7 @@ function App() {
         <Route path="/content" element={<Conteudos/>} />
         <Route path="/funil" element={<FunnelContent/>} />
         <Route path="/content/:id" element={<RootLayout />} />
+        <Route path="/app" element={<AppExplanation />} />
       </Routes>
     </Router>
   )
