@@ -4,6 +4,7 @@ import { loadFull } from "tsparticles"
 import { motion, AnimatePresence } from "framer-motion"
 import { DribbbleIcon as Behance, Github, Instagram, Linkedin, MessageCircle } from "lucide-react"
 import VSCodeSimulation from "./VsCodeSimulator"
+import {Link} from 'react-router-dom'
 
 const Hero = ({ toggleDarkMode, isDarkMode }) => {
   const [phraseIndex, setPhraseIndex] = React.useState(0)
@@ -133,6 +134,14 @@ const Hero = ({ toggleDarkMode, isDarkMode }) => {
                 Contato
               </a>
             </li>
+            <li>
+              <Link
+                to={'/supermodulos'}
+                className="text-jungle dark:text-sand hover:text-terra dark:hover:text-terra transition-colors"
+              >
+                Supermódulos
+              </Link>
+            </li>
           </ul>
 
           {/* Mobile Menu */}
@@ -186,6 +195,14 @@ const Hero = ({ toggleDarkMode, isDarkMode }) => {
                   Contato
                 </a>
               </li>
+               <li>
+              <a
+                href="#contato"
+                className="text-jungle dark:text-sand hover:text-terra dark:hover:text-terra transition-colors"
+              >
+                Supermódulos
+              </a>
+            </li>
             </ul>
           </div>
         </nav>
