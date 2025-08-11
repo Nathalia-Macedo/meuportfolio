@@ -4,6 +4,7 @@ import Slider from "react-slick"
 import { ChevronLeft, ChevronRight, Candy } from 'lucide-react'
 import nick from '../Assets/nick.png'
 import nickCard from "../Assets/nickCard.png"
+import vermaisBG from '../Assets/vermaisBG.png'
 // Importe os estilos do react-slick
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
@@ -23,6 +24,7 @@ import bizmodBG from '../Assets/bizmodBG.png'
 import bizmodCard from '../Assets/bizmodCard.png'
 import objetiva from '../Assets/objetiva.png'
 import objcard from '../Assets/objetivaCard.png'
+import vermaisMobile from '../Assets/vermaisMobile.png'
 const projects = [
   {
     id: 1,
@@ -35,7 +37,7 @@ const projects = [
     backgroundColor: "#E3DACD",
     textColor: "#2D4C3B",
     roles: ["development"],
-    link: "https://landing-page-objetiva-2b38.vercel.app/",
+    link: "https://www.objengenharia.com.br/",
     stats: {
       year: "2025",
       duration: "3 semanas",
@@ -44,6 +46,24 @@ const projects = [
   },
   {
     id: 2,
+    title: "Ver Mais Brasil",
+    subtitle: "Site institucional do projeto Ver Mais Brasil",
+    description:
+      "Esse projeto veio por meio da indicação de um aluno.",
+    cardImage: vermaisMobile,
+    backgroundImage: vermaisBG,
+    backgroundColor: "#E3DACD",
+    textColor: "#2D4C3B",
+    roles: ["development","design","copywriting"],
+    link: "https://vermaisbrasil.com.br",
+    stats: {
+      year: "2025",
+      duration: "1 dia",
+      type: "Front End",
+    },
+  },
+  {
+    id: 3,
     title: "Publi X Agency",
     subtitle: "Landing Page de Agência de Marketing",
     description:
@@ -202,6 +222,7 @@ const roleColors = {
 
 const chocoProjectNames = [
   "Landing Page ChocoBuild",
+  "Ver Mais Chocolate",
   "Brownie.js Agency",
   "Sistema de Gerenciamento de chocolates",
   "Landing Page ChocoMod",

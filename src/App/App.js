@@ -14,6 +14,7 @@ import Conteudos from "../Pages/ConteudoPage"
 import FunnelContent from "../Components/Conteudos/Marketing/FunilVendas"
 import RootLayout from "../Components/Conteudos/RootLayout"
 import AppExplanation from "../Components/Conteudos/AppManagement"
+import AffiliateMarketplace from "../Components/MarketPlace/Marketplace"
 function App() {
   return (
     <Router>
@@ -34,6 +35,7 @@ function App() {
         <Route path="/funil" element={<FunnelContent/>} />
         <Route path="/content/:id" element={<RootLayout />} />
         <Route path="/app" element={<AppExplanation />} />
+        <Route path="/produtos" element={<AffiliateMarketplace />} />
       </Routes>
     </Router>
   )
