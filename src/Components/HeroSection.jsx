@@ -196,12 +196,12 @@ const Hero = ({ toggleDarkMode, isDarkMode }) => {
                 </a>
               </li>
                <li>
-              <a
-                href="#contato"
+              <Link
+                to={'/supermodulos'}
                 className="text-jungle dark:text-sand hover:text-terra dark:hover:text-terra transition-colors"
               >
                 Supermódulos
-              </a>
+              </Link>
             </li>
             </ul>
           </div>
