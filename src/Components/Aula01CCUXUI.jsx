@@ -21,7 +21,7 @@ import {
   Layout,
   ExternalLink,
 } from "lucide-react"
-navigate = useNavigate()
+
 const Button = ({ children, variant = "default", className = "", onClick, ...props }) => {
   const baseClasses =
     "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background"
@@ -72,7 +72,7 @@ export default function SupermoduloCreativeCode() {
   const [darkMode, setDarkMode] = useState(false)
   const [activeTab, setActiveTab] = useState("parte1")
   const [expandedSection, setExpandedSection] = useState(null)
-
+    const navigate = useNavigate()
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark")
