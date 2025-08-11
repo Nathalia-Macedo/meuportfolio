@@ -479,6 +479,7 @@ export default function SupermoduloCreativeCode() {
       <header className="relative z-20 flex items-center justify-between p-6 max-w-7xl mx-auto">
         <Button
           variant="ghost"
+          onClick={() => navigate(-1)}
           className={`flex items-center gap-2 ${darkMode ? "text-[#F5F1EB] hover:text-[#E07A5F]" : "text-[#2D5A4A] hover:text-[#E07A5F]"} transition-colors duration-300 backdrop-blur-sm`}
         >
           <ArrowLeft className="w-4 h-4" />
