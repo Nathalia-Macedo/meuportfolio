@@ -25,6 +25,8 @@ import bizmodCard from '../Assets/bizmodCard.png'
 import objetiva from '../Assets/objetiva.png'
 import objcard from '../Assets/objetivaCard.png'
 import vermaisMobile from '../Assets/vermaisMobile.png'
+import eduardoBG from '../Assets/EduardoBG.png'
+import EduardoMobile from '../Assets/EduardoMobile.png'
 const projects = [
   {
     id: 1,
@@ -204,6 +206,25 @@ const projects = [
       duration: "Em desenvolvimento",
       type: "Front End com integração a API",
     },
+    
+  },{
+    id:10 ,
+    title: "Portfólio Eduardo Souza",
+    subtitle: "Portfólio para técnico de som",
+    description:
+      "Eduardo é meu vizinho, e precisava de um portfólio simples mas profissional para apresentar. Em uma conversa, surgiu o projeto!",
+    cardImage: EduardoMobile,
+    backgroundImage: eduardoBG,
+    backgroundColor: "#E3DACD",
+    textColor: "#2D4C3B",
+    roles: ["development", "design", "copywriting"],
+    link: "https://eduardosouza.vercel.app",
+    stats: {
+      year: "2025",
+      duration: "2 dias",
+      type: "Front End Estático",
+    },
+    
   },
   
 ]
@@ -230,7 +251,7 @@ const chocoProjectNames = [
   "Fórum Chocolate Amargo",
   "Landing Page TrufaTech",
   "Landing Page Grupo Bombons da Vida",
-  "Sistema de Automação Chocolate Integral",
+  "Portfólio ChocoSound"
 
 ]
 
