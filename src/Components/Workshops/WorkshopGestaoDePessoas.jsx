@@ -1186,26 +1186,36 @@ const WorkshopGestaoEquipes = () => {
               </h4>
 
               <div className="space-y-3 mb-4">
-                {question.options.map((option, oIndex) => (
-                  <button
-                    key={oIndex}
-                    onClick={() => handleQuizAnswer(section.id, qIndex, oIndex)}
-                    className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-200 ${
-                      quizAnswers[section.id]?.[qIndex] === oIndex
-                        ? oIndex === question.correct
-                          ? "border-green-500 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300"
-                          : "border-red-500 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300"
-                        : quizAnswers[section.id]?.[qIndex] !== undefined && oIndex === question.correct
-                          ? "border-green-500 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300"
+                {question.options.map((option, oIndex) => {
+                  const answerKey = `${section.id}-${qIndex}`
+                  const userAnswer = quizAnswers[answerKey]
+                  const isAnswered = userAnswer !== undefined
+                  const isCorrect = oIndex === question.correct
+                  const isUserChoice = userAnswer === oIndex
+
+                  return (
+                    <button
+                      key={oIndex}
+                      onClick={() => handleQuizAnswer(section.id, qIndex, oIndex)}
+                      className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-200 ${
+                        isAnswered
+                          ? isUserChoice
+                            ? isCorrect
+                              ? "border-green-500 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300"
+                              : "border-red-500 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300"
+                            : isCorrect
+                              ? "border-green-500 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300"
+                              : "border-sand/30 dark:border-jungle/30 text-jungle dark:text-sand opacity-60"
                           : "border-sand/30 dark:border-jungle/30 hover:border-terra/50 text-jungle dark:text-sand"
-                    }`}
-                  >
-                    {option}
-                  </button>
-                ))}
+                      }`}
+                    >
+                      {option}
+                    </button>
+                  )
+                })}
               </div>
 
-              {quizAnswers[section.id]?.[qIndex] !== undefined && (
+              {quizAnswers[`${section.id}-${qIndex}`] !== undefined && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
