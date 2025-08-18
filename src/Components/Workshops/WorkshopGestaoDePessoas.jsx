@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion"
 import {
   Users,
   Target,
-  CheckCircle,
   ArrowRight,
   ArrowLeft,
   BookOpen,
@@ -783,6 +782,447 @@ const WorkshopGestaoEquipes = () => {
 
   const currentSection = sections[activeSection]
 
+  const renderSectionContent = (section) => {
+    return (
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-8">
+        {/* Conteúdo Principal */}
+        <div className="bg-white/80 dark:bg-jungle/20 backdrop-blur-sm rounded-xl p-8 border border-sand/20 dark:border-jungle/30">
+          <p className="text-jungle dark:text-sand text-lg leading-relaxed mb-6">{section.content.main}</p>
+
+          {/* Explicação Detalhada - se existir */}
+          {section.content.detailed_explanation && (
+            <div className="space-y-6">
+              <p className="text-jungle/80 dark:text-sand/80 leading-relaxed">
+                {section.content.detailed_explanation.intro}
+              </p>
+
+              {/* Renderizar conteúdo específico baseado na estrutura de cada seção */}
+              {section.content.detailed_explanation.roles_detailed && (
+                <div className="space-y-6">
+                  {section.content.detailed_explanation.roles_detailed.map((role, index) => (
+                    <div key={index} className="bg-sand/30 dark:bg-jungle/10 rounded-lg p-6">
+                      <h4 className="text-xl font-semibold text-jungle dark:text-sand mb-2">{role.name}</h4>
+                      <p className="text-terra font-medium mb-3">{role.analogy}</p>
+                      <p className="text-jungle/80 dark:text-sand/80 mb-4">{role.detailed_explanation}</p>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <h5 className="font-semibold text-jungle dark:text-sand mb-2">Responsabilidades:</h5>
+                          <ul className="list-disc list-inside text-jungle/70 dark:text-sand/70 space-y-1">
+                            {role.responsibilities.map((resp, i) => (
+                              <li key={i}>{resp}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-jungle dark:text-sand mb-2">Na prática:</h5>
+                          <p className="text-jungle/70 dark:text-sand/70 text-sm">{role.daily_practice}</p>
+                        </div>
+                      </div>
+                      <div className="mt-4 p-3 bg-terra/10 rounded-lg">
+                        <h5 className="font-semibold text-terra mb-1">Erros comuns:</h5>
+                        <p className="text-jungle/70 dark:text-sand/70 text-sm">{role.common_mistakes}</p>
+                      </div>
+                    </div>
+                  ))}
+                  <div className="bg-terra/10 rounded-lg p-4">
+                    <p className="text-jungle dark:text-sand font-medium">
+                      🎯 {section.content.detailed_explanation.key_principle}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Artefatos */}
+              {section.content.detailed_explanation.artifacts && (
+                <div className="space-y-6">
+                  {section.content.detailed_explanation.artifacts.map((artifact, index) => (
+                    <div key={index} className="bg-sand/30 dark:bg-jungle/10 rounded-lg p-6">
+                      <h4 className="text-xl font-semibold text-jungle dark:text-sand mb-2">{artifact.name}</h4>
+                      <p className="text-terra font-medium mb-3">{artifact.analogy}</p>
+                      <p className="text-jungle/80 dark:text-sand/80 mb-4">{artifact.details}</p>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <h5 className="font-semibold text-jungle dark:text-sand mb-2">Na prática:</h5>
+                          <p className="text-jungle/70 dark:text-sand/70 text-sm">{artifact.practice}</p>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-jungle dark:text-sand mb-2">Exemplo:</h5>
+                          <p className="text-jungle/70 dark:text-sand/70 text-sm">{artifact.example}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  <div className="bg-terra/10 rounded-lg p-4">
+                    <p className="text-jungle dark:text-sand font-medium">
+                      🔄 {section.content.detailed_explanation.flow}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Eventos */}
+              {section.content.detailed_explanation.events && (
+                <div className="space-y-6">
+                  {section.content.detailed_explanation.events.map((event, index) => (
+                    <div key={index} className="bg-sand/30 dark:bg-jungle/10 rounded-lg p-6">
+                      <h4 className="text-xl font-semibold text-jungle dark:text-sand mb-2">{event.name}</h4>
+                      <p className="text-terra font-medium mb-3">{event.purpose}</p>
+                      <p className="text-jungle/80 dark:text-sand/80 mb-4">{event.details}</p>
+                      <div className="grid md:grid-cols-3 gap-4 mb-4">
+                        <div>
+                          <h5 className="font-semibold text-jungle dark:text-sand mb-2">Duração:</h5>
+                          <p className="text-jungle/70 dark:text-sand/70 text-sm">{event.duration}</p>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-jungle dark:text-sand mb-2">Participantes:</h5>
+                          <p className="text-jungle/70 dark:text-sand/70 text-sm">{event.participants}</p>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-jungle dark:text-sand mb-2">Resultado:</h5>
+                          <p className="text-jungle/70 dark:text-sand/70 text-sm">{event.outcome}</p>
+                        </div>
+                      </div>
+                      <div className="bg-terra/10 rounded-lg p-3">
+                        <h5 className="font-semibold text-terra mb-1">Dicas:</h5>
+                        <p className="text-jungle/70 dark:text-sand/70 text-sm">{event.tips}</p>
+                      </div>
+                    </div>
+                  ))}
+                  <div className="bg-terra/10 rounded-lg p-4">
+                    <p className="text-jungle dark:text-sand font-medium">
+                      🔄 {section.content.detailed_explanation.flow}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Princípios de Comunicação */}
+              {section.content.detailed_explanation.principles && (
+                <div className="space-y-6">
+                  {section.content.detailed_explanation.principles.map((principle, index) => (
+                    <div key={index} className="bg-sand/30 dark:bg-jungle/10 rounded-lg p-6">
+                      <h4 className="text-xl font-semibold text-jungle dark:text-sand mb-2">{principle.name}</h4>
+                      <p className="text-jungle/80 dark:text-sand/80 mb-4">{principle.description}</p>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <h5 className="font-semibold text-jungle dark:text-sand mb-2">Por que importa:</h5>
+                          <p className="text-jungle/70 dark:text-sand/70 text-sm">{principle.why_matters}</p>
+                        </div>
+                        <div>
+                          <h5 className="font-semibold text-jungle dark:text-sand mb-2">Como construir:</h5>
+                          <p className="text-jungle/70 dark:text-sand/70 text-sm">{principle.how_to_build}</p>
+                        </div>
+                      </div>
+                      <div className="mt-4 p-3 bg-terra/10 rounded-lg">
+                        <h5 className="font-semibold text-terra mb-1">Exemplo prático:</h5>
+                        <p className="text-jungle/70 dark:text-sand/70 text-sm">{principle.example}</p>
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Dicas práticas */}
+                  {section.content.detailed_explanation.practical_tips && (
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="bg-sand/20 dark:bg-jungle/10 rounded-lg p-6">
+                        <h4 className="text-lg font-semibold text-jungle dark:text-sand mb-4">Práticas Diárias</h4>
+                        <ul className="space-y-2">
+                          {section.content.detailed_explanation.practical_tips.daily_practices.map((practice, i) => (
+                            <li key={i} className="text-jungle/70 dark:text-sand/70 text-sm flex items-start">
+                              <span className="text-terra mr-2">•</span>
+                              {practice}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="bg-sand/20 dark:bg-jungle/10 rounded-lg p-6">
+                        <h4 className="text-lg font-semibold text-jungle dark:text-sand mb-4">Práticas Semanais</h4>
+                        <ul className="space-y-2">
+                          {section.content.detailed_explanation.practical_tips.weekly_practices.map((practice, i) => (
+                            <li key={i} className="text-jungle/70 dark:text-sand/70 text-sm flex items-start">
+                              <span className="text-terra mr-2">•</span>
+                              {practice}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Simulação Prática */}
+              {section.content.detailed_explanation.simulation_setup && (
+                <div className="space-y-6">
+                  <div className="bg-sand/30 dark:bg-jungle/10 rounded-lg p-6">
+                    <h4 className="text-xl font-semibold text-jungle dark:text-sand mb-4">Contexto da Simulação</h4>
+                    <p className="text-jungle/80 dark:text-sand/80 mb-4">
+                      {section.content.detailed_explanation.simulation_setup.context}
+                    </p>
+                    <p className="text-jungle/80 dark:text-sand/80 mb-4">
+                      {section.content.detailed_explanation.simulation_setup.current_situation}
+                    </p>
+
+                    <h5 className="font-semibold text-jungle dark:text-sand mb-3">Demandas dos Stakeholders:</h5>
+                    <ul className="space-y-2">
+                      {section.content.detailed_explanation.simulation_setup.stakeholder_requests.map((request, i) => (
+                        <li
+                          key={i}
+                          className="text-jungle/70 dark:text-sand/70 bg-white/50 dark:bg-jungle/5 p-3 rounded-lg"
+                        >
+                          {request}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-semibold text-jungle dark:text-sand">Passo a Passo da Simulação</h4>
+                    {section.content.detailed_explanation.step_by_step.map((step, index) => (
+                      <div key={index} className="bg-sand/20 dark:bg-jungle/10 rounded-lg p-6">
+                        <h5 className="text-lg font-semibold text-jungle dark:text-sand mb-2">{step.event}</h5>
+                        <p className="text-jungle/80 dark:text-sand/80 mb-3">{step.what_to_do}</p>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div>
+                            <h6 className="font-semibold text-jungle dark:text-sand mb-2">Resultado esperado:</h6>
+                            <p className="text-jungle/70 dark:text-sand/70 text-sm">{step.expected_outcome}</p>
+                          </div>
+                          <div>
+                            <h6 className="font-semibold text-jungle dark:text-sand mb-2">Exemplo:</h6>
+                            <p className="text-jungle/70 dark:text-sand/70 text-sm">{step.example}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="bg-terra/10 rounded-lg p-6">
+                    <h4 className="text-lg font-semibold text-jungle dark:text-sand mb-4">Critérios de Sucesso</h4>
+                    <ul className="space-y-2">
+                      {section.content.detailed_explanation.success_criteria.map((criteria, i) => (
+                        <li key={i} className="text-jungle/70 dark:text-sand/70 flex items-start">
+                          <span className="text-terra mr-2">✓</span>
+                          {criteria}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+
+              {/* Referência Rápida */}
+              {section.content.detailed_explanation.quick_reference && (
+                <div className="space-y-6">
+                  <div className="bg-sand/30 dark:bg-jungle/10 rounded-lg p-6">
+                    <h4 className="text-xl font-semibold text-jungle dark:text-sand mb-4">
+                      Quando as Coisas Dão Errado
+                    </h4>
+                    <div className="space-y-4">
+                      {section.content.detailed_explanation.quick_reference.when_things_go_wrong.map((item, i) => (
+                        <div key={i} className="bg-white/50 dark:bg-jungle/5 p-4 rounded-lg">
+                          <h5 className="font-semibold text-terra mb-2">Problema: {item.problem}</h5>
+                          <p className="text-jungle/80 dark:text-sand/80 mb-2">✅ Solução: {item.solution}</p>
+                          <p className="text-jungle/60 dark:text-sand/60 text-sm">❌ Não faça: {item.dont_do}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="bg-sand/30 dark:bg-jungle/10 rounded-lg p-6">
+                    <h4 className="text-xl font-semibold text-jungle dark:text-sand mb-4">Checklist Diário</h4>
+                    <ul className="space-y-2">
+                      {section.content.detailed_explanation.quick_reference.daily_checklist.map((item, i) => (
+                        <li key={i} className="text-jungle/70 dark:text-sand/70 font-mono text-sm">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-semibold text-jungle dark:text-sand">Facilitação de Reuniões</h4>
+                    {section.content.detailed_explanation.quick_reference.meeting_facilitation.map((meeting, i) => (
+                      <div key={i} className="bg-sand/20 dark:bg-jungle/10 rounded-lg p-6">
+                        <h5 className="text-lg font-semibold text-jungle dark:text-sand mb-4">{meeting.meeting}</h5>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div>
+                            <h6 className="font-semibold text-jungle dark:text-sand mb-2">Perguntas-chave:</h6>
+                            <ul className="space-y-1">
+                              {meeting.key_questions.map((question, j) => (
+                                <li key={j} className="text-jungle/70 dark:text-sand/70 text-sm">
+                                  • {question}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <h6 className="font-semibold text-terra mb-2">Sinais de alerta:</h6>
+                            <ul className="space-y-1">
+                              {meeting.red_flags.map((flag, j) => (
+                                <li key={j} className="text-jungle/70 dark:text-sand/70 text-sm">
+                                  ⚠️ {flag}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Conteúdo estruturado (listas, pontos, etc.) */}
+          {section.content.points && (
+            <ul className="space-y-3 mb-6">
+              {section.content.points.map((point, index) => (
+                <li key={index} className="flex items-start">
+                  <span className="text-terra mr-3 mt-1">•</span>
+                  <span className="text-jungle/80 dark:text-sand/80">{point}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* Práticas específicas */}
+          {section.content.practices && (
+            <div className="mb-6">
+              <h4 className="text-lg font-semibold text-jungle dark:text-sand mb-4">Práticas Recomendadas:</h4>
+              <ul className="space-y-3">
+                {section.content.practices.map((practice, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="text-terra mr-3 mt-1">✓</span>
+                    <span className="text-jungle/80 dark:text-sand/80">{practice}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Papéis (para seção específica) */}
+          {section.content.roles && (
+            <div className="space-y-4 mb-6">
+              {section.content.roles.map((role, index) => (
+                <div key={index} className="bg-sand/20 dark:bg-jungle/10 rounded-lg p-4">
+                  <h4 className="font-semibold text-jungle dark:text-sand mb-2">{role.name}</h4>
+                  <p className="text-jungle/80 dark:text-sand/80 mb-3">{role.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {role.responsibilities.map((resp, i) => (
+                      <span key={i} className="bg-terra/20 text-terra px-3 py-1 rounded-full text-sm">
+                        {resp}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Referências (para seção específica) */}
+          {section.content.references && (
+            <div className="space-y-4 mb-6">
+              {section.content.references.map((ref, index) => (
+                <div key={index} className="bg-sand/20 dark:bg-jungle/10 rounded-lg p-4">
+                  <h4 className="font-semibold text-jungle dark:text-sand mb-2">{ref.title}</h4>
+                  <ul className="space-y-1">
+                    {ref.items.map((item, i) => (
+                      <li key={i} className="text-jungle/80 dark:text-sand/80 text-sm">
+                        • {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Simulação (para seção específica) */}
+          {section.content.simulation && (
+            <div className="space-y-4 mb-6">
+              <div className="bg-sand/20 dark:bg-jungle/10 rounded-lg p-4">
+                <h4 className="font-semibold text-jungle dark:text-sand mb-3">Backlog Inicial:</h4>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {section.content.simulation.backlog.map((item, i) => (
+                    <span key={i} className="bg-terra/20 text-terra px-3 py-1 rounded-full text-sm">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+
+                <h4 className="font-semibold text-jungle dark:text-sand mb-3">Passos da Simulação:</h4>
+                <ol className="space-y-2">
+                  {section.content.simulation.steps.map((step, i) => (
+                    <li key={i} className="text-jungle/80 dark:text-sand/80 text-sm">
+                      {i + 1}. {step}
+                    </li>
+                  ))}
+                </ol>
+
+                <h4 className="font-semibold text-jungle dark:text-sand mb-3 mt-4">Critérios de Sucesso:</h4>
+                <ul className="space-y-1">
+                  {section.content.simulation.criteria.map((criteria, i) => (
+                    <li key={i} className="text-jungle/80 dark:text-sand/80 text-sm">
+                      ✓ {criteria}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Quiz - SEMPRE presente */}
+        <div className="bg-white/80 dark:bg-jungle/20 backdrop-blur-sm rounded-xl p-8 border border-sand/20 dark:border-jungle/30">
+          <h3 className="text-2xl font-bold text-jungle dark:text-sand mb-6 flex items-center">
+            <Target className="w-6 h-6 mr-3 text-terra" />
+            Quiz de Fixação
+          </h3>
+
+          {section.content.quiz.map((question, qIndex) => (
+            <div key={qIndex} className="mb-8 last:mb-0">
+              <h4 className="text-lg font-semibold text-jungle dark:text-sand mb-4">
+                {qIndex + 1}. {question.question}
+              </h4>
+
+              <div className="space-y-3 mb-4">
+                {question.options.map((option, oIndex) => (
+                  <button
+                    key={oIndex}
+                    onClick={() => handleQuizAnswer(section.id, qIndex, oIndex)}
+                    className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-200 ${
+                      quizAnswers[section.id]?.[qIndex] === oIndex
+                        ? oIndex === question.correct
+                          ? "border-green-500 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300"
+                          : "border-red-500 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300"
+                        : quizAnswers[section.id]?.[qIndex] !== undefined && oIndex === question.correct
+                          ? "border-green-500 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300"
+                          : "border-sand/30 dark:border-jungle/30 hover:border-terra/50 text-jungle dark:text-sand"
+                    }`}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+
+              {quizAnswers[section.id]?.[qIndex] !== undefined && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-terra/10 border border-terra/20 rounded-lg p-4"
+                >
+                  <p className="text-jungle dark:text-sand">
+                    <strong>Explicação:</strong> {question.feedback}
+                  </p>
+                </motion.div>
+              )}
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-sand dark:bg-jungle transition-colors duration-300 relative overflow-hidden">
       <div className="absolute inset-0 opacity-30 dark:opacity-20">
@@ -1007,405 +1447,7 @@ const WorkshopGestaoEquipes = () => {
                 </div>
               </div>
 
-              <div className="space-y-8">
-                <motion.p
-                  className="text-lg md:text-xl leading-relaxed text-jungle/90 dark:text-sand/90 font-medium"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                  {currentSection.content.main}
-                </motion.p>
-
-                {currentSection.content.points && (
-                  <motion.ul
-                    className="space-y-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                  >
-                    {currentSection.content.points.map((point, index) => (
-                      <motion.li
-                        key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="flex items-start space-x-4 group"
-                      >
-                        <motion.div
-                          className="w-6 h-6 rounded-full bg-terra flex items-center justify-center mt-1 flex-shrink-0"
-                          whileHover={{ scale: 1.2, rotate: 180 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <CheckCircle className="w-4 h-4 text-sand" />
-                        </motion.div>
-                        <span className="text-jungle/80 dark:text-sand/80 text-lg leading-relaxed group-hover:text-jungle dark:group-hover:text-sand transition-colors">
-                          {point}
-                        </span>
-                      </motion.li>
-                    ))}
-                  </motion.ul>
-                )}
-
-                {activeSection === 2 && (
-                  <div className="space-y-8">
-                    {/* Introdução */}
-                    <div className="bg-sand/80 dark:bg-jungle/20 backdrop-blur-sm rounded-2xl p-8 border border-jungle/10">
-                      <h3 className="text-2xl font-bold text-jungle dark:text-sand mb-4">
-                        {sections[2].content.detailed_explanation.intro}
-                      </h3>
-                      <p className="text-jungle/80 dark:text-sand/80 text-lg leading-relaxed">
-                        {sections[2].content.detailed_explanation.key_principle}
-                      </p>
-                    </div>
-
-                    {/* Papéis Detalhados */}
-                    <div className="grid gap-6">
-                      {sections[2].content.detailed_explanation.roles_detailed.map((role, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                          className="bg-sand/80 dark:bg-jungle/20 backdrop-blur-sm rounded-2xl p-8 border border-jungle/10"
-                        >
-                          <div className="flex items-center gap-4 mb-6">
-                            <div className="w-12 h-12 bg-terra/20 rounded-full flex items-center justify-center">
-                              <Users className="w-6 h-6 text-terra" />
-                            </div>
-                            <div>
-                              <h4 className="text-xl font-bold text-jungle dark:text-sand">{role.name}</h4>
-                              <p className="text-terra font-medium">{role.analogy}</p>
-                            </div>
-                          </div>
-
-                          <div className="space-y-4">
-                            <p className="text-jungle/80 dark:text-sand/80 leading-relaxed">
-                              {role.detailed_explanation}
-                            </p>
-
-                            <div className="grid md:grid-cols-3 gap-4">
-                              <div className="bg-jungle/5 dark:bg-sand/5 rounded-lg p-4">
-                                <h5 className="font-semibold text-jungle dark:text-sand mb-2">Responsabilidades</h5>
-                                <ul className="space-y-1">
-                                  {role.responsibilities.map((resp, i) => (
-                                    <li key={i} className="text-sm text-jungle/70 dark:text-sand/70">
-                                      • {resp}
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-
-                              <div className="bg-jungle/5 dark:bg-sand/5 rounded-lg p-4">
-                                <h5 className="font-semibold text-jungle dark:text-sand mb-2">Na Prática</h5>
-                                <p className="text-sm text-jungle/70 dark:text-sand/70">{role.daily_practice}</p>
-                              </div>
-
-                              <div className="bg-terra/5 rounded-lg p-4">
-                                <h5 className="font-semibold text-terra mb-2">Evite</h5>
-                                <p className="text-sm text-terra/70">{role.common_mistakes}</p>
-                              </div>
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-
-                    {/* Quiz */}
-                    <div className="bg-sand/80 dark:bg-jungle/20 backdrop-blur-sm rounded-2xl p-8 border border-jungle/10">
-                      <h3 className="text-xl font-bold text-jungle dark:text-sand mb-6">Quiz: Papéis do Scrum</h3>
-                      {currentSection.content.quiz && (
-                        <motion.div
-                          className="mt-12 space-y-8"
-                          initial={{ opacity: 0, y: 30 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.6, delay: 0.4 }}
-                        >
-                          {currentSection.content.quiz.map((quiz, quizIndex) => (
-                            <motion.div
-                              key={quizIndex}
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.5, delay: quizIndex * 0.2 }}
-                              className="bg-sand/80 dark:bg-jungle/80 backdrop-blur-sm rounded-3xl p-8 border border-jungle/20 dark:border-sand/20 shadow-lg hover:shadow-xl transition-all duration-300"
-                            >
-                              <h4 className="font-bold text-xl mb-6 text-jungle dark:text-sand leading-relaxed">
-                                {quizIndex + 1}. {quiz.question}
-                              </h4>
-                              <div className="space-y-3">
-                                {quiz.options.map((option, optionIndex) => {
-                                  const key = `${activeSection}-${quizIndex}`
-                                  const isSelected = quizAnswers[key] === optionIndex
-                                  const isCorrect = optionIndex === quiz.correct
-                                  const showResult = showFeedback[key]
-
-                                  return (
-                                    <motion.button
-                                      key={optionIndex}
-                                      onClick={() => handleQuizAnswer(activeSection, quizIndex, optionIndex)}
-                                      className={`w-full text-left p-5 rounded-2xl border-2 transition-all duration-300 font-medium ${
-                                        showResult
-                                          ? isCorrect
-                                            ? "bg-green-100 border-green-300 text-green-800 shadow-lg"
-                                            : isSelected
-                                              ? "bg-red-100 border-red-300 text-red-800 shadow-lg"
-                                              : "bg-jungle/5 dark:bg-sand/5 border-jungle/10 dark:border-sand/10 text-jungle/60 dark:text-sand/60"
-                                          : isSelected
-                                            ? "bg-terra/20 border-terra text-jungle dark:text-sand shadow-lg"
-                                            : "bg-jungle/5 dark:bg-sand/5 border-jungle/10 dark:border-sand/10 text-jungle dark:text-sand hover:bg-terra/10 hover:border-terra/50 hover:shadow-md"
-                                      }`}
-                                      whileHover={{ scale: 1.02, y: -2 }}
-                                      whileTap={{ scale: 0.98 }}
-                                      disabled={showResult}
-                                    >
-                                      <div className="flex items-center space-x-4">
-                                        <div
-                                          className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                                            showResult && isCorrect
-                                              ? "bg-green-500 border-green-500"
-                                              : showResult && isSelected && !isCorrect
-                                                ? "bg-red-500 border-red-500"
-                                                : isSelected
-                                                  ? "bg-terra border-terra"
-                                                  : "border-jungle/30 dark:border-sand/30"
-                                          }`}
-                                        >
-                                          {showResult && isCorrect && <CheckCircle className="w-4 h-4 text-white" />}
-                                          {showResult && isSelected && !isCorrect && (
-                                            <span className="text-white text-xs">✕</span>
-                                          )}
-                                          {isSelected && !showResult && (
-                                            <div className="w-2 h-2 bg-sand rounded-full" />
-                                          )}
-                                        </div>
-                                        <span>{option}</span>
-                                      </div>
-                                    </motion.button>
-                                  )
-                                })}
-                              </div>
-                              {showFeedback[`${activeSection}-${quizIndex}`] && (
-                                <motion.div
-                                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                                  className="mt-6 p-5 bg-terra/10 border-2 border-terra/30 rounded-2xl"
-                                >
-                                  <div className="flex items-start space-x-3">
-                                    <Lightbulb className="w-5 h-5 text-terra mt-0.5 flex-shrink-0" />
-                                    <p className="text-jungle dark:text-sand font-medium leading-relaxed">
-                                      {quiz.feedback}
-                                    </p>
-                                  </div>
-                                </motion.div>
-                              )}
-                            </motion.div>
-                          ))}
-                        </motion.div>
-                      )}
-                    </div>
-                  </div>
-                )}
-
-                {currentSection.content.detailed_explanation && !activeSection === 2 && (
-                  <motion.div
-                    className="space-y-8 mb-10"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                  >
-                    <p className="text-lg text-jungle/80 dark:text-sand/80 leading-relaxed">
-                      {currentSection.content.detailed_explanation.intro}
-                    </p>
-
-                    {currentSection.content.detailed_explanation.artifacts && (
-                      <div className="space-y-6">
-                        {currentSection.content.detailed_explanation.artifacts.map((artifact, index) => (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="bg-sand/60 dark:bg-jungle/60 backdrop-blur-sm rounded-2xl p-6 border border-jungle/10 dark:border-sand/10"
-                          >
-                            <div className="flex items-start space-x-4 mb-4">
-                              <div className="w-12 h-12 bg-terra/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                                <BookOpen className="w-6 h-6 text-terra" />
-                              </div>
-                              <div>
-                                <h4 className="text-xl font-bold text-jungle dark:text-sand mb-1">{artifact.name}</h4>
-                                <p className="text-terra font-medium text-sm">{artifact.analogy}</p>
-                              </div>
-                            </div>
-                            <p className="text-jungle/90 dark:text-sand/90 mb-3 leading-relaxed">
-                              {artifact.description}
-                            </p>
-                            <p className="text-jungle/80 dark:text-sand/80 mb-4 leading-relaxed">{artifact.details}</p>
-                            <div className="space-y-2">
-                              <p className="text-sm font-medium text-jungle dark:text-sand">
-                                <span className="text-terra">Na prática:</span> {artifact.practice}
-                              </p>
-                              <p className="text-sm font-medium text-jungle dark:text-sand">
-                                <span className="text-terra">Exemplo:</span> {artifact.example}
-                              </p>
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
-                    )}
-
-                    {currentSection.content.detailed_explanation.events && (
-                      <div className="space-y-6">
-                        {currentSection.content.detailed_explanation.events.map((event, index) => (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="bg-sand/60 dark:bg-jungle/60 backdrop-blur-sm rounded-2xl p-6 border border-jungle/10 dark:border-sand/10"
-                          >
-                            <div className="flex items-start space-x-4 mb-4">
-                              <div className="w-12 h-12 bg-terra/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                                <Clock className="w-6 h-6 text-terra" />
-                              </div>
-                              <div className="flex-1">
-                                <h4 className="text-xl font-bold text-jungle dark:text-sand mb-1">{event.name}</h4>
-                                <p className="text-terra font-medium text-sm mb-2">{event.purpose}</p>
-                                <div className="flex flex-wrap gap-4 text-xs">
-                                  <span className="bg-jungle/10 dark:bg-sand/10 px-2 py-1 rounded-lg text-jungle dark:text-sand">
-                                    ⏱️ {event.duration}
-                                  </span>
-                                  <span className="bg-jungle/10 dark:bg-sand/10 px-2 py-1 rounded-lg text-jungle dark:text-sand">
-                                    👥 {event.participants}
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                            <p className="text-jungle/90 dark:text-sand/90 mb-3 leading-relaxed">{event.details}</p>
-                            <div className="space-y-2">
-                              <p className="text-sm font-medium text-jungle dark:text-sand">
-                                <span className="text-terra">Resultado:</span> {event.outcome}
-                              </p>
-                              <p className="text-sm font-medium text-jungle dark:text-sand">
-                                <span className="text-terra">Dicas:</span> {event.tips}
-                              </p>
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
-                    )}
-
-                    {currentSection.content.detailed_explanation.flow && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
-                        className="bg-terra/10 border-2 border-terra/30 rounded-2xl p-6 text-center"
-                      >
-                        <div className="flex items-center justify-center space-x-3 mb-3">
-                          <Target className="w-6 h-6 text-terra" />
-                          <h4 className="text-lg font-bold text-jungle dark:text-sand">Resumo do Fluxo</h4>
-                        </div>
-                        <p className="text-jungle dark:text-sand font-medium leading-relaxed">
-                          {currentSection.content.detailed_explanation.flow}
-                        </p>
-                      </motion.div>
-                    )}
-                  </motion.div>
-                )}
-
-                {currentSection.content.quiz && !activeSection === 2 && (
-                  <motion.div
-                    className="mt-12 space-y-8"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                  >
-                    <div className="text-center">
-                      <h3 className="text-2xl md:text-3xl font-bold text-jungle dark:text-sand mb-2">
-                        Quiz Interativo
-                      </h3>
-                      <p className="text-terra font-medium">Teste seus conhecimentos</p>
-                      <div className="w-16 h-1 bg-terra rounded-full mx-auto mt-3"></div>
-                    </div>
-
-                    {currentSection.content.quiz.map((quiz, quizIndex) => (
-                      <motion.div
-                        key={quizIndex}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: quizIndex * 0.2 }}
-                        className="bg-sand/80 dark:bg-jungle/80 backdrop-blur-sm rounded-3xl p-8 border border-jungle/20 dark:border-sand/20 shadow-lg hover:shadow-xl transition-all duration-300"
-                      >
-                        <h4 className="font-bold text-xl mb-6 text-jungle dark:text-sand leading-relaxed">
-                          {quizIndex + 1}. {quiz.question}
-                        </h4>
-                        <div className="space-y-3">
-                          {quiz.options.map((option, optionIndex) => {
-                            const key = `${activeSection}-${quizIndex}`
-                            const isSelected = quizAnswers[key] === optionIndex
-                            const isCorrect = optionIndex === quiz.correct
-                            const showResult = showFeedback[key]
-
-                            return (
-                              <motion.button
-                                key={optionIndex}
-                                onClick={() => handleQuizAnswer(activeSection, quizIndex, optionIndex)}
-                                className={`w-full text-left p-5 rounded-2xl border-2 transition-all duration-300 font-medium ${
-                                  showResult
-                                    ? isCorrect
-                                      ? "bg-green-100 border-green-300 text-green-800 shadow-lg"
-                                      : isSelected
-                                        ? "bg-red-100 border-red-300 text-red-800 shadow-lg"
-                                        : "bg-jungle/5 dark:bg-sand/5 border-jungle/10 dark:border-sand/10 text-jungle/60 dark:text-sand/60"
-                                    : isSelected
-                                      ? "bg-terra/20 border-terra text-jungle dark:text-sand shadow-lg"
-                                      : "bg-jungle/5 dark:bg-sand/5 border-jungle/10 dark:border-sand/10 text-jungle dark:text-sand hover:bg-terra/10 hover:border-terra/50 hover:shadow-md"
-                                }`}
-                                whileHover={{ scale: 1.02, y: -2 }}
-                                whileTap={{ scale: 0.98 }}
-                                disabled={showResult}
-                              >
-                                <div className="flex items-center space-x-4">
-                                  <div
-                                    className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                                      showResult && isCorrect
-                                        ? "bg-green-500 border-green-500"
-                                        : showResult && isSelected && !isCorrect
-                                          ? "bg-red-500 border-red-500"
-                                          : isSelected
-                                            ? "bg-terra border-terra"
-                                            : "border-jungle/30 dark:border-sand/30"
-                                    }`}
-                                  >
-                                    {showResult && isCorrect && <CheckCircle className="w-4 h-4 text-white" />}
-                                    {showResult && isSelected && !isCorrect && (
-                                      <span className="text-white text-xs">✕</span>
-                                    )}
-                                    {isSelected && !showResult && <div className="w-2 h-2 bg-sand rounded-full" />}
-                                  </div>
-                                  <span>{option}</span>
-                                </div>
-                              </motion.button>
-                            )
-                          })}
-                        </div>
-                        {showFeedback[`${activeSection}-${quizIndex}`] && (
-                          <motion.div
-                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            className="mt-6 p-5 bg-terra/10 border-2 border-terra/30 rounded-2xl"
-                          >
-                            <div className="flex items-start space-x-3">
-                              <Lightbulb className="w-5 h-5 text-terra mt-0.5 flex-shrink-0" />
-                              <p className="text-jungle dark:text-sand font-medium leading-relaxed">{quiz.feedback}</p>
-                            </div>
-                          </motion.div>
-                        )}
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                )}
-              </div>
+              {renderSectionContent(currentSection)}
             </motion.div>
           </AnimatePresence>
 
