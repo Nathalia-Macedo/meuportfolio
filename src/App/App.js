@@ -15,8 +15,9 @@ import FunnelContent from "../Components/Conteudos/Marketing/FunilVendas"
 import RootLayout from "../Components/Conteudos/RootLayout"
 import AppExplanation from "../Components/Conteudos/AppManagement"
 import AffiliateMarketplace from "../Components/MarketPlace/Marketplace"
-import SupermoduloCreativeCode from "../Components/Supermodulo"
-import LandingPage from "../Components/Aula01CCUXUI"
+import SupermoduloCreativeCode from "../Components/SMs/Supermodulo"
+import LandingPage from '../Components/SMs/Aula01CCUXUI'
+import Aula2 from "../Components/SMs/Aula02/CreativeCodeUXUI2"
 function App() {
   return (
     <Router>
@@ -40,6 +41,9 @@ function App() {
         <Route path="/produtos" element={<AffiliateMarketplace />} />
         <Route path="/supermodulos" element={<SupermoduloCreativeCode />} />
         <Route path="/aula01" element={<LandingPage />} />
+        <Route path="/aula02" element={<Aula2 />} />
+
+
       </Routes>
     </Router>
   )
