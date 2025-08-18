@@ -142,6 +142,15 @@ const Hero = ({ toggleDarkMode, isDarkMode }) => {
                 Supermódulos
               </Link>
             </li>
+                         <li>
+              <Link
+                to={'/workshops'}
+                className="text-jungle dark:text-sand hover:text-terra dark:hover:text-terra transition-colors"
+              >
+               Workshops
+              </Link>
+              
+            </li>
           </ul>
 
           {/* Mobile Menu */}
@@ -202,6 +211,16 @@ const Hero = ({ toggleDarkMode, isDarkMode }) => {
               >
                 Supermódulos
               </Link>
+              
+            </li>
+             <li>
+              <Link
+                to={'/workshops'}
+                className="text-jungle dark:text-sand hover:text-terra dark:hover:text-terra transition-colors"
+              >
+               Workshops
+              </Link>
+              
             </li>
             </ul>
           </div>

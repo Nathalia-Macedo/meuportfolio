@@ -18,6 +18,8 @@ import AffiliateMarketplace from "../Components/MarketPlace/Marketplace"
 import SupermoduloCreativeCode from "../Components/SMs/Supermodulo"
 import LandingPage from '../Components/SMs/Aula01CCUXUI'
 import Aula2 from "../Components/SMs/Aula02/CreativeCodeUXUI2"
+import WorkshopsExplicacao from "../Components/Workshops/WorkshopExplicacao"
+import WorkshopGestaoEquipes from "../Components/Workshops/WorkshopGestaoDePessoas"
 function App() {
   return (
     <Router>
@@ -42,6 +44,9 @@ function App() {
         <Route path="/supermodulos" element={<SupermoduloCreativeCode />} />
         <Route path="/aula01" element={<LandingPage />} />
         <Route path="/aula02" element={<Aula2 />} />
+        <Route path="/workshops" element={<WorkshopsExplicacao />} />
+      <Route path="/workshop-gestao-equipes" element={<WorkshopGestaoEquipes/>}/>
+
 
 
       </Routes>
