@@ -20,6 +20,7 @@ import LandingPage from '../Components/SMs/Aula01CCUXUI'
 import Aula2 from "../Components/SMs/Aula02/CreativeCodeUXUI2"
 import WorkshopsExplicacao from "../Components/Workshops/WorkshopExplicacao"
 import WorkshopGestaoEquipes from "../Components/Workshops/WorkshopGestaoDePessoas"
+import AulaLayouts from "../Components/Aula05Front"
 function App() {
   return (
     <Router>
@@ -46,6 +47,7 @@ function App() {
         <Route path="/aula02" element={<Aula2 />} />
         <Route path="/workshops" element={<WorkshopsExplicacao />} />
       <Route path="/workshop-gestao-equipes" element={<WorkshopGestaoEquipes/>}/>
+      <Route path="/aula05" element={<AulaLayouts/>}/>
 
 
 
