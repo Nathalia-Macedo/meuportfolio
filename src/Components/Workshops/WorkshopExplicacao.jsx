@@ -1,8 +1,6 @@
-"use client"
-
 import { useState, useCallback, useEffect } from "react"
 import { motion } from "framer-motion"
-import { MapPin, Clock, Users, Target, ChevronRight, BookOpen, ArrowLeft } from "lucide-react"
+import { MapPin, Clock, Users, Target, ChevronRight, BookOpen, ArrowLeft, Brain } from "lucide-react"
 import Particles from "react-tsparticles"
 import { loadFull } from "tsparticles"
 
@@ -32,6 +30,16 @@ const WorkshopsExplicacao = () => {
       link: "/workshop-gestao-equipes",
       gradient: "from-terra to-orange-600",
     },
+    {
+      id: 2,
+      title: "IA para Validar Ideias de Produtos",
+      subtitle: "Teste antes de investir",
+      description:
+        "Descubra como usar a Inteligência Artificial para validar problemas, analisar mercado, criar personas e testar aceitação de produtos antes de gastar tempo e dinheiro.",
+      icon: <Brain className="w-8 h-8" />,
+      link: "/workshop-validacao-ia",
+      gradient: "from-purple-600 to-indigo-600",
+    }
   ]
 
   const features = [
@@ -234,7 +242,7 @@ const WorkshopsExplicacao = () => {
               </p>
             </motion.div>
 
-            <div className="flex justify-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {workshops.map((workshop, index) => (
                 <motion.div
                   key={workshop.id}

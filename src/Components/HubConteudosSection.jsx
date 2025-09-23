@@ -73,12 +73,12 @@ const ContentHub = () => {
           transition={{ duration: 0.5, delay: 0.7 }}
         >
           <Link
-            to="/aula05"
+            to="/conteudos"
             className="inline-flex items-center px-6 py-3 bg-terra hover:bg-terra/90 text-white font-semibold rounded-full text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             onMouseEnter={() => setHoveredIndex(0)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-            Aula 5 de HTML/CSS
+            Ver conteúdos
             <motion.div
               animate={{ x: hoveredIndex === 0 ? 5 : 0 }}
               transition={{ duration: 0.2 }}

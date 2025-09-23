@@ -10,9 +10,44 @@
   box-sizing: border-box;
 }
 
+
 body {
   font-family: "Outfit", sans-serif;
   background-color: var(--color-sand);
+  color: var(--color-jungle);
+}
+
+html.dark body {
+  background-color: var(--color-jungle);
+  color: var(--color-sand);
+}
+
+html.dark a, html.dark p, html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6, html.dark span, html.dark li, html.dark label, html.dark input, html.dark textarea {
+  color: var(--color-sand) !important;
+}
+
+html.dark .bg-cream\/90, html.dark .bg-cream\/50, html.dark .bg-cream\/30, html.dark .bg-cream\/10 {
+  background-color: #2d4c3b !important;
+}
+
+html.dark .border-jungle\/10, html.dark .border-terra\/10, html.dark .border-jungle\/20, html.dark .border-terra\/20 {
+  border-color: #e3dacd33 !important;
+}
+
+html.dark .shadow-lg, html.dark .shadow-xl {
+  box-shadow: 0 4px 24px 0 #00000055 !important;
+}
+
+html.dark .bg-terra\/10, html.dark .bg-terra\/20 {
+  background-color: #d96c4a33 !important;
+}
+
+html.dark .text-jungle, html.dark .text-jungle\/80 {
+  color: var(--color-sand) !important;
+}
+
+html.dark .text-cream, html.dark .text-cream\/90 {
+  color: var(--color-sand) !important;
 }
 
 html {

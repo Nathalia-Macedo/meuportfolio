@@ -21,6 +21,8 @@ import Aula2 from "../Components/SMs/Aula02/CreativeCodeUXUI2"
 import WorkshopsExplicacao from "../Components/Workshops/WorkshopExplicacao"
 import WorkshopGestaoEquipes from "../Components/Workshops/WorkshopGestaoDePessoas"
 import AulaLayouts from "../Components/Aula05Front"
+import AreaDeConteudos from "../Components/PageConteudos"
+import WorkshopValidacaoIA from "../Components/Workshops/WorkshopValidacaoIA"
 function App() {
   return (
     <Router>
@@ -36,7 +38,7 @@ function App() {
         <Route path="/desenvolvimento" element={<FullStackPage/>}/>
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
-        <Route path="/conteudos" element={<UnderConstruction />} />
+        <Route path="/conteudos" element={<AreaDeConteudos />} />
         <Route path="/content" element={<Conteudos/>} />
         <Route path="/funil" element={<FunnelContent/>} />
         <Route path="/content/:id" element={<RootLayout />} />
@@ -48,6 +50,7 @@ function App() {
         <Route path="/workshops" element={<WorkshopsExplicacao />} />
       <Route path="/workshop-gestao-equipes" element={<WorkshopGestaoEquipes/>}/>
       <Route path="/aula05" element={<AulaLayouts/>}/>
+      <Route path="/workshop-validacao-ia" element={<WorkshopValidacaoIA/>}/>
 
 
 
