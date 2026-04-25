@@ -111,7 +111,7 @@ const projects = [
     backgroundColor: "#E3DACD",
     textColor: "#2D4C3B",
     roles: ["development"],
-    link: "https://www.bizmod.com.br/",
+    link: "https://bizmod.netlify.app/bizone",
     stats: {
       year: "2025",
       duration: "Em desenvolvimento",
@@ -146,7 +146,7 @@ const projects = [
     backgroundColor: "#E3DACD",
     textColor: "#2D4C3B",
     roles: ["development", "design"],
-    link: "https://www.erionsistemas.com.br/forum/",
+    link: "https://forum-erion-sistemas.netlify.app/forum",
     stats: {
       year: "2024",
       duration: "2 meses",
