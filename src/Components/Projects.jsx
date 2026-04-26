@@ -196,12 +196,12 @@ const projects = [
     subtitle: "Portfólio para técnico de som",
     description:
       "Eduardo é meu vizinho, e precisava de um portfólio simples mas profissional para apresentar. Em uma conversa, surgiu o projeto!",
-    cardImage: EduardwoMobile,
+    cardImage: EduardoMobile,
     backgroundImage: eduardoBG,
     backgroundColor: "#E3DACD",
     textColor: "#2D4C3B",
     roles: ["development", "design", "copywriting"],
-    link: "https://eduardosouza.vercel.app",
+    link: "https://eduardo-souza.netlify.app/",
     stats: {
       year: "2025",
       duration: "2 dias",
