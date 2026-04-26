@@ -48,24 +48,6 @@ const projects = [
   },
   {
     id: 2,
-    title: "Ver Mais Brasil",
-    subtitle: "Site institucional do projeto Ver Mais Brasil",
-    description:
-      "Esse projeto veio por meio da indicação de um aluno.",
-    cardImage: vermaisMobile,
-    backgroundImage: vermaisBG,
-    backgroundColor: "#E3DACD",
-    textColor: "#2D4C3B",
-    roles: ["development","design","copywriting"],
-    link: "https://vermaisbrasil.com.br",
-    stats: {
-      year: "2025",
-      duration: "1 dia",
-      type: "Front End",
-    },
-  },
-  {
-    id: 3,
     title: "Publi X Agency",
     subtitle: "Landing Page de Agência de Marketing",
     description:
@@ -75,7 +57,7 @@ const projects = [
     backgroundColor: "#E3DACD",
     textColor: "#2D4C3B",
     roles: ["development","design"],
-    link: "https://publix.vercel.app",
+    link: "https://publixagency.netlify.app/",
     stats: {
       year: "2025",
       duration: "1 semana",
@@ -84,24 +66,6 @@ const projects = [
   },
   {
     id: 3,
-    title: "Sistema de Gerenciamento de Talentos MegaStage",
-    subtitle: "Gerenciamento do site e talentos da MegaStage",
-    description:
-      "Esse projeto veio através da indicação de um aluno que trabalha na MegaStage, o site e o sistema desenvolvidos por mim e pelo Renan, o Back end da minha equipe, Renan Teixeira!",
-    cardImage: MSCard,
-    backgroundImage: MSBG,
-    backgroundColor: "#E3DACD",
-    textColor: "#2D4C3B",
-    roles: ["development", "design", "copywriting"],
-    link: "https://mega-stage-real.vercel.app/",
-    stats: {
-      year: "2025",
-      duration: "Em desenvolvimento",
-      type: "Front End com integração a API",
-    },
-  },
-  {
-    id: 4,
     title: "Landing Page Biz One",
     subtitle: "Landing page integrada com o pixel da meta, e a API do Salesforce, e verificação de Automação do Google.",
     description:
@@ -119,7 +83,7 @@ const projects = [
     },
   },
   {
-    id: 5,
+    id: 4,
     title: "Clínica Nutricare",
     subtitle: "Landing page de clínica de nutrição",
     description:
@@ -137,7 +101,7 @@ const projects = [
     },
   },
   {
-    id: 6,
+    id: 5,
     title: "Landing Page Unitec",
     subtitle: "Landing page para ERP",
     description:
@@ -155,7 +119,7 @@ const projects = [
     },
   },
   {
-    id: 7,
+    id: 6,
     title: "Landing Page Grupo Águias da Vida",
     subtitle: "Landing page para clínica de Reabilitação",
     description:
@@ -173,7 +137,7 @@ const projects = [
     },
   },
   {
-    id: 8,
+    id: 7,
     title: "Sistema de Automação Integral Energia",
     subtitle: "Automação de preenchimento de formulários",
     description:
@@ -191,7 +155,7 @@ const projects = [
     },
     
   },{
-    id:9 ,
+    id:8 ,
     title: "Portfólio Eduardo Souza",
     subtitle: "Portfólio para técnico de som",
     description:
@@ -226,15 +190,12 @@ const roleColors = {
 
 const chocoProjectNames = [
   "Landing Page ChocoBuild",
-  "Ver Mais Chocolate",
   "Brownie.js Agency",
-  "Sistema de Gerenciamento de chocolates",
   "Landing Page ChocoMod",
   "Clínica NutriChocolate",
   "Landing Page TrufaTech",
   "Landing Page Grupo Bombons da Vida",
   "Portfólio ChocoSound"
-
 ]
 
 export default function Projects() {
