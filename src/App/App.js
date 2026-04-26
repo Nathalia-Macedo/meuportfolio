@@ -37,7 +37,7 @@ function App() {
         <Route path="/sdr" element={<SDRPage/>}/>
         <Route path="/desenvolvimento" element={<FullStackPage/>}/>
         <Route path="/404" element={<NotFound />} />
-        <Route path="*" element={<Navigate to="/404" replace />} />
+<Route path="*" element={<NotFound />} />
         <Route path="/conteudos" element={<AreaDeConteudos />} />
         <Route path="/content" element={<Conteudos/>} />
         <Route path="/funil" element={<FunnelContent/>} />
