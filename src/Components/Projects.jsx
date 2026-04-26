@@ -138,23 +138,6 @@ const projects = [
   },
   {
     id: 6,
-    title: "Fórum Erion Sistemas",
-    subtitle: "Fórum interno para Empresa",
-    description: "Esse foi o primeiro projeto fechado no 99freelas, criei a landing page e o fórum interno da empresa!",
-    cardImage: erion1,
-    backgroundImage: erion,
-    backgroundColor: "#E3DACD",
-    textColor: "#2D4C3B",
-    roles: ["development", "design"],
-    link: "https://forum-erion-sistemas.netlify.app/forum",
-    stats: {
-      year: "2024",
-      duration: "2 meses",
-      type: "Front End",
-    },
-  },
-  {
-    id: 7,
     title: "Landing Page Unitec",
     subtitle: "Landing page para ERP",
     description:
@@ -164,7 +147,7 @@ const projects = [
     backgroundColor: "#E3DACD",
     textColor: "#2D4C3B",
     roles: ["development", "design", "copywriting"],
-    link: "https://unitecsistemas.com.br/",
+    link: "https://unitech-sistems.netlify.app/",
     stats: {
       year: "2025",
       duration: "1 semana",
@@ -172,7 +155,7 @@ const projects = [
     },
   },
   {
-    id: 8,
+    id: 7,
     title: "Landing Page Grupo Águias da Vida",
     subtitle: "Landing page para clínica de Reabilitação",
     description:
@@ -182,7 +165,7 @@ const projects = [
     backgroundColor: "#E3DACD",
     textColor: "#2D4C3B",
     roles: ["development", "design", "copywriting"],
-    link: "https://aguias-da-vida.vercel.app/",
+    link: "https://aguias-da-vida.netlify.app/",
     stats: {
       year: "2025",
       duration: "2 semana",
@@ -190,7 +173,7 @@ const projects = [
     },
   },
   {
-    id: 9,
+    id: 8,
     title: "Sistema de Automação Integral Energia",
     subtitle: "Automação de preenchimento de formulários",
     description:
@@ -200,7 +183,7 @@ const projects = [
     backgroundColor: "#E3DACD",
     textColor: "#2D4C3B",
     roles: ["development", "design", "copywriting"],
-    link: "https://integral-energia.vercel.app/",
+    link: "https://integral-energia-front.vercel.app/login?next=%2F",
     stats: {
       year: "2025",
       duration: "Em desenvolvimento",
@@ -208,12 +191,12 @@ const projects = [
     },
     
   },{
-    id:10 ,
+    id:9 ,
     title: "Portfólio Eduardo Souza",
     subtitle: "Portfólio para técnico de som",
     description:
       "Eduardo é meu vizinho, e precisava de um portfólio simples mas profissional para apresentar. Em uma conversa, surgiu o projeto!",
-    cardImage: EduardoMobile,
+    cardImage: EduardwoMobile,
     backgroundImage: eduardoBG,
     backgroundColor: "#E3DACD",
     textColor: "#2D4C3B",
@@ -248,7 +231,6 @@ const chocoProjectNames = [
   "Sistema de Gerenciamento de chocolates",
   "Landing Page ChocoMod",
   "Clínica NutriChocolate",
-  "Fórum Chocolate Amargo",
   "Landing Page TrufaTech",
   "Landing Page Grupo Bombons da Vida",
   "Portfólio ChocoSound"
